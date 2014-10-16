@@ -86,7 +86,7 @@ public class PacienteDAO implements ICRUD<Paciente> {
 
 		List<Paciente> lPacientes = new ArrayList<>();
 		Paciente paciente;
-		String sql = "select * from usuarios order by nomepaciente";
+		String sql = "select * from pacientes order by nomepaciente";
 
 		preparar = connection.prepareStatement(sql);
 

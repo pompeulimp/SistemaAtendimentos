@@ -1,6 +1,7 @@
 package testBlackBox;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import br.com.tsi4.model.Paciente;
 import br.com.tsi4.model.DAO.ICRUD;
@@ -11,7 +12,7 @@ public class TextBlackBoxPaciente {
 	ICRUD<Paciente> icrudP = new PacienteDAO();
 
 	public static void main(String[] args) {
-		new TextBlackBoxPaciente().criar();
+		new TextBlackBoxPaciente().ListarTodos();
 	}
 
 	public void criar() {	
@@ -27,5 +28,19 @@ public class TextBlackBoxPaciente {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public void ListarTodos(){
+		List<Paciente> pacientes = null;
+		try {
+			 pacientes = icrudP.restriveAll();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (Paciente paciente : pacientes) {
+			System.out.println(paciente.getNomePaciente());
+		}
+		
 	}
 }

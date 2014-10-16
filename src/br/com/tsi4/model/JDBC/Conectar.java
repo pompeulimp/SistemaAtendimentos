@@ -15,6 +15,7 @@ public class Conectar {
 		
 		try {
 			Class.forName("org.postgresql.Driver");
+			
 			connection = DriverManager.getConnection(
 					"jdbc:postgresql://localhost:5432/agendamento", "postgres",
 					"1234");
