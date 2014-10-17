@@ -4,23 +4,23 @@ import java.util.List;
 
 public class Medico {
 	
-	private Long pkMedico;
+	private int pkMedico;
 	private String crm;
 	private String nomeMedico;
 	private String telMedico;
-	private char disponibilidade;
+	private String disponibilidade;
 	private List<EspecialidadeMedica> especialidades;
 
 	public Medico() {
 
 	}
 
-	public Long getPkMedico() {
+	public int getPkMedico() {
 		return pkMedico;
 	}
 
-	public void setPkMedico(Long pkMedico) {
-		this.pkMedico = pkMedico;
+	public void setPkMedico(int pkmedico) {
+		this.pkMedico = pkmedico;
 	}
 
 	public String getCrm() {
@@ -47,11 +47,11 @@ public class Medico {
 		this.telMedico = telMedico;
 	}
 
-	public char getDisponibilidade() {
+	public String getDisponibilidade() {
 		return disponibilidade;
 	}
 
-	public void setDisponibilidade(char disponibilidade) {
+	public void setDisponibilidade(String disponibilidade) {
 		this.disponibilidade = disponibilidade;
 	}
 

@@ -8,8 +8,8 @@ public interface ICRUD<T> {
 	 * recebe um objeto de um tipo qualquer e grava esse tipo no banco;
 	 * 
 	 * @param obj
-	 * @return Primary key do objeto gravado ou -1 se não gravar. 
-	 * @throws SQLException deve ser tratada com try cat
+	 * @return Primary key do objeto gravado. 
+	 * @throws SQLException 
 	 */
 	public long create (T obj) throws SQLException;
 	/**
@@ -21,21 +21,20 @@ public interface ICRUD<T> {
 	 */
 	public long update(T obj) throws SQLException;
 	/**
-	 * Deletar um determidado objeto do banco de dados 
-	 * deve retornar um boolean;
-	 * @param um objeto do tipo desejado
+	 * Deleta um determidado objetod o banco usando 
+	 * deve retornar um boolan;
+	 * @param pkKey
 	 * @throws SQLException 
 	 */
 	public boolean delete(T obj) throws SQLException;
 	/**
-	 * retorna todos objetos do mesmo Tipo no banco de dados;
+	 * retorna todos do mesmo Tipo no banco de dados;
 	 * @return arrayList<T>
 	 * @throws SQLException 
 	 */
 	public List<T> restriveAll() throws SQLException;
 	/**
-	 * Recebe uma chave primaria e retorna e retoronara um
-	 * objeto do banco que tenha essa chave
+	 * Recebe uma chave primaria e torna o Objeto daquele tipo
 	 * @param pkKLey
 	 * @return T
 	 * @throws SQLException 
