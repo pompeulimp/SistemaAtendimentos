@@ -11,7 +11,7 @@ import br.com.tsi4.model.DAO.MedicoDAO;
 public class MedicoTestDAO {
 	
 	
-	Medico medico;
+/*	Medico medico;
 	ICRUD<Medico> icrudM = new MedicoDAO();
 
 	public static void main(String[] args) {
@@ -33,6 +33,6 @@ public class MedicoTestDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 }
