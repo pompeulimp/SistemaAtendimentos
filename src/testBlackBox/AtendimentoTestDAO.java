@@ -13,7 +13,7 @@ import br.com.tsi4.model.DAO.MedicoDAO;
 public class AtendimentoTestDAO {
 	
 	
-	Atendimento atendimento;
+	/* Atendimento atendimento;
 	ICRUD<Atendimento> icrudM = new AtendimentoDAO();
 
 	public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class AtendimentoTestDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 
 }
