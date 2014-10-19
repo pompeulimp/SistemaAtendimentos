@@ -8,7 +8,7 @@ import br.com.tsi4.model.DAO.ICRUD;
 
 public class HospitalTestDAO {
 	
-	Hospital hospital;
+	/*Hospital hospital;
 	ICRUD<Hospital> icrudH = new HospitalDAO();
 
 	public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class HospitalTestDAO {
 
 	public void criarHospital() {		
 		hospital = new Hospital();
-		hospital.setPkHospital(2);
+		hospital.setPkHospital(3);
 		hospital.setPkFila(1);
 		hospital.setRazaosocial("Hopital Odeilio Prudencio ltda");
 		hospital.setNomeFantasia("Hospital Odelio Prudencio");
@@ -32,7 +32,7 @@ public class HospitalTestDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	
 
