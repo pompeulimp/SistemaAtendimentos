@@ -10,9 +10,7 @@ public class Conectar {
 
 	private Conectar() {
 	}
-	/*
-		meu saco
-	*/
+
 	public static Connection getConnection() {
 		
 		try {
