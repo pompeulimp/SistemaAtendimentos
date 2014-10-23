@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Paulo Emilio/Desktop/IF Goiano/4° Periodo/Metodologia de Desenvolvimento de Sistemas/Projeto Sala/postgresql-9.2-1002.jdbc4.jar"/>
+	<classpathentry kind="lib" path="postgresql-9.3-1102.jdbc41.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
