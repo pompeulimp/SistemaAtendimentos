@@ -12,9 +12,10 @@ import br.com.caelum.vraptor.Result;
 @Controller
 public class IndexController {
 	@Inject private Result result;
+	
 	@Path("/")
 	public void index(){
-		result.include("wecan", "Nos Podemos");
-		result.include("data", new Date(Calendar.getInstance().getTimeInMillis()));
+		result.include("wecan", "pompeu marcelo welker");
+		result.include("data", new Date(Calendar.getInstance().getTimeInMillis()));		
 	}
 }
