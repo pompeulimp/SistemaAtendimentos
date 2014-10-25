@@ -1,0 +1,14 @@
+body{
+    background: black;
+    font-size: 15px;
+    color: greenyellow;
+}
+
+input{
+    border: 2px outset lightblue;
+}
+
+.erro{
+
+    border:2px  inset red;
+}
