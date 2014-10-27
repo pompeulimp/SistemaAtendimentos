@@ -16,6 +16,9 @@
 <body onload="startTime()">
 	<h1>${wecan}</h1>
 	<h1 id="txt"></h1>
+	
 	<input type="text">
+	
+	<input type="button" value="estilo do bootstrap" class="btn btn-primary">
 </body>
 </html>

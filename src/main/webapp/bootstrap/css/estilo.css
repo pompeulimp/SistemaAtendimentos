@@ -1,5 +1,5 @@
 body{
-    background: black;
+    background: #F5F5DC;
     font-size: 15px;
     color: greenyellow;
 }
@@ -10,5 +10,7 @@ input{
 
 .erro{
 
+    background: url("img/erro.png") no-repeat right top #ffffff;
+    padding: 4px 20px 4px 0;
     border:2px  inset red;
 }

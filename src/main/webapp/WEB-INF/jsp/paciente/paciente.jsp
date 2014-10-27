@@ -10,6 +10,10 @@
 
 <link href="<c:url value="bootstrap/css/estilo.css"/>"
 	rel="stylesheet" type="text/css" />
+	
+<link href="<c:url value="bootstrap/css/bootstrap.css"/>"
+	rel="stylesheet" type="text/css" />
+	
 <script type="text/javascript"
 	src="<c:url value="bootstrap/js/validacoesFomulario.js"/>"></script>
 
@@ -18,13 +22,14 @@
 
 <body>
  <h1>${paciente}</h1>
- <p>Cadastro Paciente</p>
  <form action="" id="cadastroPaciente">
  <p>Nome: </p><input type="text" id="nome" onblur="validaNulidade('nome')"><br>
- <p>CPF: </p><input type="text" id="cpf"><br>
- <p>Endereço: </p><input type="text" id="endereco"><br>
- <p>Telefone: </p><input type="text" id="telefone"><br>
- <input type="submit" id="enviar" value="Salvar" onclick="teste()"><input type="reset" value="Limpar">
+ <p>CPF: </p><input type="text" id="cpf" onblur="validaNulidade('cpf')"><br>
+ <p>Endereço: </p><input type="text" id="endereco" onblur="validaNulidade('endereco')"><br>
+ <p>Telefone: </p><input type="text" id="telefone" onblur="validaNulidade('telefone')"><br><br>
+ <input type="submit" id="enviar" class="btn btn-warning" value="Salvar" onclick="teste()"><input type="reset" value="Limpar">
  </form>
 </body>
 </html>
+
+
