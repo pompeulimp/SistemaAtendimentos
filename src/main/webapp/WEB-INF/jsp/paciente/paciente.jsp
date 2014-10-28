@@ -21,14 +21,18 @@
 </head>
 
 <body>
+<div class="well" align="center">
  <h1>${paciente}</h1>
  <form action="" id="cadastroPaciente">
- <p>Nome: </p><input type="text" id="nome" onblur="validaNulidade('nome')"><br>
- <p>CPF: </p><input type="text" id="cpf" onblur="validaNulidade('cpf')"><br>
- <p>Endereço: </p><input type="text" id="endereco" onblur="validaNulidade('endereco')"><br>
- <p>Telefone: </p><input type="text" id="telefone" onblur="validaNulidade('telefone')"><br><br>
- <input type="submit" id="enviar" class="btn btn-warning" value="Salvar" onclick="teste()"><input type="reset" value="Limpar">
+<table>
+ <tr><td>Nome: </td><td><input type="text" id="nome" onblur="validacao('nome')"></td></tr>
+ <tr><td>CPF: </td><td><input type="text" id="cpf" onblur="validacao('cpf')"></td></tr>
+ <tr><td>Endereço: </td><td><input type="text" id="endereco" onblur="validacao('endereco')"></td></tr>
+ <tr><td>Telefone: </td><td><input type="text" id="telefone" onblur="validacao('telefone')"></td></tr>
+ <tr align="center"><td colspan = 2><br><input type="submit" id="enviar" class="btn btn-warning" value="Salvar">.        .<input type="reset" class="btn btn-warning" value="Limpar"></td></tr>
+ </table>
  </form>
+ </div>
 </body>
 </html>
 

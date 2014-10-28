@@ -12,7 +12,8 @@ html {
 }
 
 body {
-	margin: 0;
+	margin: 0 auto;
+	
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup,
