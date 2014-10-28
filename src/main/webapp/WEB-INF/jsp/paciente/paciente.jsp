@@ -25,11 +25,11 @@
  <h1>${paciente}</h1>
  <form action="" id="cadastroPaciente">
 <table>
- <tr><td>Nome: </td><td><input type="text" id="nome" onblur="validacao('nome')"></td></tr>
- <tr><td>CPF: </td><td><input type="text" id="cpf" onblur="validacao('cpf')"></td></tr>
- <tr><td>Endereço: </td><td><input type="text" id="endereco" onblur="validacao('endereco')"></td></tr>
- <tr><td>Telefone: </td><td><input type="text" id="telefone" onblur="validacao('telefone')"></td></tr>
- <tr align="center"><td colspan = 2><br><input type="submit" id="enviar" class="btn btn-warning" value="Salvar">.        .<input type="reset" class="btn btn-warning" value="Limpar"></td></tr>
+ <tr><td>Nome: </td><td><input type="text" id="nome" onblur="validacao('nome',false)"></td></tr>
+ <tr><td>CPF: </td><td><input type="text" id="cpf" onblur="validacao('cpf',false)"></td></tr>
+ <tr><td>Endereço: </td><td><input type="text" id="endereco" onblur="validacao('endereco',false)"></td></tr>
+ <tr><td>Telefone: </td><td><input type="text" id="telefone" onblur="validacao('telefone',false)"></td></tr>
+ <tr align="center"><td colspan = 2><br><input type="submit" onclick=" return validaFormulario()" id="enviar" class="btn btn-warning" value="Salvar">.        .<input type="reset" class="btn btn-warning" value="Limpar"></td></tr>
  </table>
  </form>
  </div>

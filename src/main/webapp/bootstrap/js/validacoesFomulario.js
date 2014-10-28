@@ -11,102 +11,135 @@
  */
 
 
-function validacao(campo){
+
+function validaFormulario(){
+	
+	var campos = ["nome","cpf","endereco","telefone"];
+	var result = true;
+	for(i = 0; i < campos.length; i++){
+				result = validacao(campos[i], true);
+		if (!result){
+			return false;
+		}
+		
+	}
+}
+
+
+function validacao(campo,sub){
+	
     var valor = document.getElementById(campo).value;
 
+    
+    
     if(valor =="" || valor == null){
-        erro(campo,1);
-        return null;
+        erro(campo,1,sub);
+        return false;
     }else {
         erro(campo, 0);
     }
 
     if(campo == "nome"){
-        validaNome(valor,campo);
+        return validaNome(valor,campo,sub);
     }else
         if(campo == "nascimento"){
-            validata(valor,campo);
+            return validata(valor,campo,sub);
         }else
             if(campo == "email"){
-                validaEmail(valor,campo);
+                return validaEmail(valor,campo,sub);
             }else
             if(campo == "telefone"){
-                validafone(valor,campo);
+                return validafone(valor,campo,sub);
             }else
             	if(campo == "cpf"){
-            		validaCPF(valor,campo);
+            	    return validaCPF(valor,campo,sub);
             	}else
             		if(campo == "endereco"){
-            			validaEndereco(valor,campo);
+            			return validaEndereco(valor,campo,sub);
             		}
 }
 
 
-function validafone(numero, campo){
+function validafone(numero, campo,sub){
     var exprecao = /^\(\d{2}\)( |)(\d{5}|\d{4})\-\d{4}$/ig;
     var resultado = exprecao.test(numero);
     if(!resultado){
-        erro(campo,2)
+        erro(campo,2,sub);
+    }else{
+    	erro(campo,0);
+    	return true;
     }
 }
 
 
-function validaEmail(email, campo){
+function validaEmail(email, campo,sub){
         var exprecao = /^(([a-zA-Z]+[0-9_.-]*)+@[a-zA-Z]{2,}\.[a-zA-Z]{2,4})+(\.?[a-zA-Z]{2})?$/ig;
         var resultado = exprecao.test(email);
         if(!resultado){
-            erro(campo,3)
+            erro(campo,3,sub);
+        }else{
+        	erro(campo,0);
+        	return true;
         }
     }
 
 
-function validaNome(nome, campo){
+function validaNome(nome, campo,sub){
 
     var exprecao = /^[a-zA-ZçÇ]+\ [a-zA-ZçÇ]+[ a-zA-ZçÇ]+$/ig;
     var resultado = exprecao.test(nome);
     if(!resultado){
-     erro(campo,4)
+     erro(campo,4,sub);
+    }else{
+    	erro(campo,0);
+    	return true;
     }
+    
 }
 
 
-function validata(data, campo){
+function validata(data, campo,sub){
     var exprecao = /^([1-9]|0[1-9]|[1,2][0-9]|3[0,1])\/([1-9]|1[0,1,2])\/(\d{2}|\d{4})|([1-9]|0[1-9]|[1,2][0-9]|3[0,1])\-([1-9]|1[0,1,2])\-(\d{2}|\d{4})$/ig;
     var resultado = exprecao.test(data);
     if(!resultado){
-        erro(campo,5)
+        erro(campo,5,sub);
+    }else{
+    	erro(campo,0);
+    	return true;
     }
 }
 
-function validaCPF(valor,campo){
+function validaCPF(valor,campo,sub){
     
     var exprecao = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/ig;
     var resultado = exprecao.test(valor);
     if(!resultado){
-        erro(campo,6);
+        erro(campo,6,sub);
+    }else{
+    	erro(campo,0);
+    	return true;
     }
-    else
-        erro(campo,0);
 
 }
 
-function validaEndereco(valor,campo){
+function validaEndereco(valor,campo,sub){
 	var exprecao = /^[a-z]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,. ]*$/ig;
 	var resultado = exprecao.test(valor);
 	
 	if(!resultado){
-        erro(campo,7);
+        erro(campo,7,sub);
+    }else{
+    	erro(campo,0);
+    	return true;
     }
-    else
-        erro(campo,0);
 }
 
-function erro(campo,codErro) {
-	alert("a ta entrou no erro");
-alert(campo);
+function erro(campo,codErro,sub) {
         var  insere = document.getElementById(campo);
         var conteudo = insere.value;
-        if(codErro != 0 && codErro != 100){
+        
+        if(codErro != 0){
+        	if(sub){
             if(codErro == 1){
                 alert("O campo "+ campo+" é de preenchimento obrigatorio");
             }else
@@ -128,7 +161,9 @@ alert(campo);
                 if(codErro == 7){
                     alert("Endereço invalido");
                 }
+        	}
             insere.className += insere.className ? ' erro' : 'erro';
+            return false;
         }else{
             insere.className -= insere.className ? ' erro' : 'erro';
         
