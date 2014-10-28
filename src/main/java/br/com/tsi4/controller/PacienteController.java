@@ -10,8 +10,8 @@ import br.com.caelum.vraptor.Result;
 public class PacienteController {
 	
 	@Inject private Result result;
-	@Path("/CadastroPaciente")
+	@Path("/p")
 	public void paciente(){
-		result.include("paciente", "Cadastro Paciente");
+		result.include("paciente", "pessoas");
 	}
 }
