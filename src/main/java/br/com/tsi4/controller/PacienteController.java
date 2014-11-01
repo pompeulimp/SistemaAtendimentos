@@ -12,6 +12,6 @@ public class PacienteController {
 	@Inject private Result result;
 	@Path("/CadastroPaciente")
 	public void paciente(){
-		result.include("paciente", "pessoas");
+		result.include("paciente", "Cadastro de Pacientes");
 	}
 }

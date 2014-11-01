@@ -78,7 +78,7 @@ function validaEmail(email, campo,sub){
         if(!resultado){
             erro(campo,3,sub);
         }else{
-        	erro(campo,0);
+        	erro(campo,20);
         	return true;
         }
     }
@@ -122,6 +122,13 @@ function validaCPF(valor,campo,sub){
 
 }
 
+function validaEmail(email, campo){
+    var exprecao = /^(([a-zA-Z]+[0-9_.-]*)+@[a-zA-Z]{2,}\.[a-zA-Z]{2,4})+(\.?[a-zA-Z]{3})?$/ig;
+    var resultado = exprecao.test(email);
+    if(!resultado){
+        erro(campo,3)
+    }
+}
 function validaEndereco(valor,campo,sub){
 	var exprecao = /^[a-z]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,. ]*$/ig;
 	var resultado = exprecao.test(valor);
@@ -162,10 +169,12 @@ function erro(campo,codErro,sub) {
                     alert("Endereço invalido");
                 }
         	}
+        	insere.className -= insere.className ? ' form-control' : 'form-control';
             insere.className += insere.className ? ' erro' : 'erro';
             return false;
         }else{
             insere.className -= insere.className ? ' erro' : 'erro';
+            insere.className += insere.className ? ' form-control' : 'form-control';
         
         }
 
