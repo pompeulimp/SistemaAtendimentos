@@ -15,7 +15,7 @@ public class IndexController {
 	
 	@Path("/")
 	public void index(){
-		result.include("wecan", "pompeu marcelo welker");
+		result.include("wecan", "Paulo Pompeu Marcelo Commiters ");
 		result.include("data", new Date(Calendar.getInstance().getTimeInMillis()));		
 	}
 }
