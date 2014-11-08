@@ -13,10 +13,10 @@ public class Conectar {
 		Connection con = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			con =  DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/agendamento", "postgres",
-				"1234");
-			// System.out.println("Conectado");
+			con =  	DriverManager.getConnection(
+					"jdbc:postgresql://localhost:5432/agendamento",
+					"postgres",
+					"1234");
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

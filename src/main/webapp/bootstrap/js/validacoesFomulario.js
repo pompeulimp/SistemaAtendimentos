@@ -78,11 +78,7 @@ function validaEmail(email, campo,sub){
         if(!resultado){
             erro(campo,3,sub);
         }else{
-<<<<<<< HEAD
-        	erro(campo,0);
-=======
-        	erro(campo,20);
->>>>>>> f6f8f0bc69ce4921547dbda094392077b551a2c5
+
         	return true;
         }
     }

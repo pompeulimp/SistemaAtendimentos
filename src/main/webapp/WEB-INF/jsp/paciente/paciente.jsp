@@ -27,7 +27,7 @@
 				<div class="span4" id="sidebar">
 					<h1 class="text-muted">${paciente}</h1>
 
-					<form action="" id="cadastroPaciente">
+					<form action="" id="cadastroPaciente" method="post">
 						<fieldset>
 							<legend></legend>
 
