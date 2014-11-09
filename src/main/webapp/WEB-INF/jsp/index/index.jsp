@@ -18,7 +18,7 @@
 	<h1 id="txt"></h1>
 	<input type="text">	
 	<input type="button" value="estilo do bootstrap" class="btn btn-primary">
-	<h2><a href="paciente/listar">Lista Pacientes</a></h2>
-	<h2><a href="paciente/add">Criar Pacientes</a></h2>
+	<h2><a href="paciente/listar">Listar Pacientes</a></h2>
+	<h2><a href="paciente/add">Criar Paciente</a></h2>
 </body>
 </html>
