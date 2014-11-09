@@ -27,11 +27,11 @@ public class Usuario {
 		this.pkHospital = pkHospital;
 	}
 
-	public String getNomeusuario() {
+	public String getNomeUsuario() {
 		return nomeusuario;
 	}
 
-	public void setNomeusuario(String nomeusuario) {
+	public void setNomeUsuario(String nomeusuario) {
 		this.nomeusuario = nomeusuario;
 	}
 
