@@ -17,6 +17,25 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 	public UsuarioDAO() {
 		connection = Conectar.getConnection();
 	}
+	
+	public boolean existe(Usuario usuario){
+		String sql = "SELECT NOMEUSUARIO, SENHA FROM USUARIOS WHERE NOMEUSUARIO =? AND SENHA=?";
+		
+		try{
+			preparar = connection.prepareStatement(sql);
+			preparar.setString(1, usuario.getNomeUsuario());
+			preparar.setString(2, usuario.getSenha());
+			
+			ResultSet rs = preparar.executeQuery();
+			return rs.next();
+			
+		} catch(SQLException e){
+			System.out.println("Ocorreu um erro: ");e.getMessage();
+		}
+		usuario.setNomeUsuario("admin");
+		
+		return false;
+	}
 
 	@Override
 	public long create(Usuario obj) throws SQLException {
@@ -26,7 +45,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 		preparar = connection.prepareStatement(sql);
 
 		preparar.setLong(1, obj.getPkHospital());
-		preparar.setString(2, obj.getNomeusuario());
+		preparar.setString(2, obj.getNomeUsuario());
 		preparar.setString(3, obj.getSenha());
 		preparar.setString(4, obj.getNivelusuario());
 
@@ -46,7 +65,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 				+ "(nomeusuario=?,senha=?,nivelusuario=?)";
 		preparar = connection.prepareStatement(sql);
 
-		preparar.setString(1, obj.getNomeusuario());
+		preparar.setString(1, obj.getNomeUsuario());
 		preparar.setString(2, obj.getSenha());
 		preparar.setString(3, obj.getNivelusuario());
 		preparar.execute();
@@ -93,7 +112,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 
 			usuario.setPkUsuario(rs.getLong("pk_usuario"));
 			usuario.setPkHospital(rs.getLong("pk_hospital"));
-			usuario.setNomeusuario(rs.getNString("nomeusuario"));
+			usuario.setNomeUsuario(rs.getNString("nomeusuario"));
 			usuario.setSenha(rs.getNString("senha"));
 			usuario.setNivelusuario(rs.getNString("nivelusuario"));
 
@@ -119,7 +138,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 			usuario = new Usuario();
 			usuario.setPkHospital(rs.getLong("pk_hospital"));
 			usuario.setPkUsuario(rs.getLong("pk_usuario"));
-			usuario.setNomeusuario(rs.getString("nomeUsuario"));
+			usuario.setNomeUsuario(rs.getString("nomeUsuario"));
 			usuario.setSenha(rs.getString("senha"));
 			usuario.setNivelusuario(rs.getString("nivelusuario"));
 
@@ -145,7 +164,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 			usuario = new Usuario();
 			usuario.setPkUsuario(rs.getLong("pk_usuario"));
 			usuario.setPkHospital(rs.getLong("pk_hospital"));
-			usuario.setNomeusuario(rs.getNString("nomeusuario"));
+			usuario.setNomeUsuario(rs.getNString("nomeusuario"));
 			usuario.setSenha(rs.getNString("senha"));
 			usuario.setNivelusuario(rs.getNString("nivelusuario"));
 
