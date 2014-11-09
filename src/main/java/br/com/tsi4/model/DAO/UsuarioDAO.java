@@ -20,16 +20,16 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 
 	@Override
 	public long create(Usuario obj) throws SQLException {
-		String sql = "insert into usuarios(pk_usuario,pk_hospital,nomeusuario,senha,nivelusuario)"
-				+ "values (?,? , ? , ? , ?)";
+		String sql = "insert into usuarios(pk_hospital,nomeusuario,senha,nivelusuario)"
+				+ "values (? , ? , ? , ?)";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkUsuario());
-		preparar.setLong(2, obj.getPkHospital());
-		preparar.setString(3, obj.getNomeusuario());
-		preparar.setString(4, obj.getSenha());
-		preparar.setString(5, obj.getNivelusuario());
-		
+
+		preparar.setLong(1, obj.getPkHospital());
+		preparar.setString(2, obj.getNomeusuario());
+		preparar.setString(3, obj.getSenha());
+		preparar.setString(4, obj.getNivelusuario());
+
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
 
@@ -43,12 +43,12 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 	@Override
 	public long update(Usuario obj) throws SQLException {
 		String sql = "update usuarios set"
-				+ "(pk_hospital=?,nomeusuario=?,senha=?,nivelusuario=?)";
+				+ "(nomeusuario=?,senha=?,nivelusuario=?)";
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkHospital());
-		preparar.setString(2, obj.getNomeusuario());
-		preparar.setString(3, obj.getSenha());
-		preparar.setString(4, obj.getNivelusuario());
+
+		preparar.setString(1, obj.getNomeusuario());
+		preparar.setString(2, obj.getSenha());
+		preparar.setString(3, obj.getNivelusuario());
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
 
@@ -61,16 +61,16 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 	}
 
 	@Override
-	public boolean delete(Usuario obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 
-		String sql = "DELETE FROM USUARIOS WHERE id=?";
+		String sql = "DELETE FROM USUARIOS WHERE pk_usuario=?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkUsuario());
+		preparar.setLong(1, pkKey);
 		preparar.execute();
 		preparar.close();
 
-		if (retriveOneByPkKey(obj.getPkUsuario()) == null) {
+		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
 

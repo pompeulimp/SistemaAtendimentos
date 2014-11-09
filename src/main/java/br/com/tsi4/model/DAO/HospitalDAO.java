@@ -78,16 +78,16 @@ public class HospitalDAO implements ICRUD<Hospital> {
 	}
 
 	@Override
-	public boolean delete(Hospital obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 		
 		String sql = "DELETE FROM hospitais WHERE pk_hospital=?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkHospital());
+		preparar.setLong(1, pkKey);
 		preparar.execute();
 		preparar.close();
 
-		if (retriveOneByPkKey(obj.getPkHospital()) == null) {
+		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
 

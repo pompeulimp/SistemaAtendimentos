@@ -63,16 +63,16 @@ public class FilaDAO implements ICRUD<Fila>{
 	}
 
 	@Override
-	public boolean delete(Fila obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 		
 		String sql = "DELETE FROM fila WHERE pk_fila = ?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPk_fila());
+		preparar.setLong(1, pkKey);
 		preparar.execute();
 		preparar.close();
 
-		if (retriveOneByPkKey(obj.getPk_fila()) == null) {
+		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
 

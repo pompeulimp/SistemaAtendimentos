@@ -21,12 +21,12 @@ public interface ICRUD<T> {
 	 */
 	public long update(T obj) throws SQLException;
 	/**
-	 * Deleta um determidado objetod o banco usando 
+	 * Deleta um determidado objeto do banco usando 
 	 * deve retornar um boolan;
 	 * @param pkKey
 	 * @throws SQLException 
 	 */
-	public boolean delete(T obj) throws SQLException;
+	public boolean delete(long pkKey) throws SQLException;
 	/**
 	 * retorna todos do mesmo Tipo no banco de dados;
 	 * @return arrayList<T>

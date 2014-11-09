@@ -54,7 +54,7 @@ public class AtendimentoDAO implements ICRUD<Atendimento>{
 	}
 
 	@Override
-	public boolean delete(Atendimento obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}

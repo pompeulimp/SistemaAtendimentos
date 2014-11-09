@@ -59,15 +59,15 @@ public class EspMedicoDAO implements ICRUD<EspecialidadeMedica>{
 	}
 
 	@Override
-	public boolean delete(EspecialidadeMedica obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 		String sql = "DELETE FROM especialidades WHERE id=?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkEspecialidade());
+		preparar.setLong(1, pkKey);
 		preparar.execute();
 		preparar.close();
 
-		if (retriveOneByPkKey(obj.getPkEspecialidade()) == null) {
+		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
 

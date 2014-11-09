@@ -21,20 +21,20 @@ public class PacienteDAO implements ICRUD<Paciente> {
 	@Override
 	public long create(Paciente obj) throws SQLException {
 
-		String sql = "insert into pacientes(pk_paciente,nomepaciente,cpfPaciente,endPaciente,telpaciente)"
-				+ "values (? ,? , ? , ? , ?)";
+		String sql = "insert into pacientes(nomepaciente,cpfPaciente,endPaciente,telpaciente)"
+				+ "values (? , ? , ? , ?)";
 
 		preparar = connection.prepareStatement(sql);
 		
-		preparar.setLong(1, obj.getPk_paciente());
-		preparar.setString(2, obj.getNomePaciente());
-		preparar.setString(3, obj.getCpfPaciente());
-		preparar.setString(4, obj.getEnderecoPaciente());
-		preparar.setString(5, obj.getTelefonePaciente());
+		
+		preparar.setString(1, obj.getNomePaciente());
+		preparar.setString(2, obj.getCpfPaciente());
+		preparar.setString(3, obj.getEnderecoPaciente());
+		preparar.setString(4, obj.getTelefonePaciente());
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
-
+		preparar.close();
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
@@ -45,8 +45,7 @@ public class PacienteDAO implements ICRUD<Paciente> {
 	@Override
 	public long update(Paciente obj) throws SQLException {
 
-		String sql = "update pacientes set"
-				+ "(nomepaciente-?,cpfPaciente=?,endPaciente=?,telpaciente=?)";
+		String sql = "update pacientes set nomepaciente=?,cpfPaciente=?,endPaciente=?,telpaciente=? where pk_paciente = ?";
 
 		preparar = connection.prepareStatement(sql);
 
@@ -54,27 +53,28 @@ public class PacienteDAO implements ICRUD<Paciente> {
 		preparar.setString(2, obj.getCpfPaciente());
 		preparar.setString(3, obj.getEnderecoPaciente());
 		preparar.setString(4, obj.getTelefonePaciente());
+		preparar.setLong(5, obj.getPk_paciente());
 
 		preparar.execute();
-		ResultSet rs = preparar.getGeneratedKeys();
-
-		if (rs.next()) {
-			return rs.getInt(1);
-		}
-		return -1;
+		
+		preparar.close();
+		
+		
+		
+		return obj.getPk_paciente();
 	}
 
 	@Override
-	public boolean delete(Paciente obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 
-		String sql = "DELETE FROM USUARIOS WHERE id=?";
+		String sql = "DELETE FROM PACIENTES WHERE pk_paciente=?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPk_paciente());
+		preparar.setLong(1, pkKey);
 		preparar.execute();
 		preparar.close();
 
-		if (retriveOneByPkKey(obj.getPk_paciente()) == null) {
+		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
 
@@ -86,7 +86,7 @@ public class PacienteDAO implements ICRUD<Paciente> {
 
 		List<Paciente> lPacientes = new ArrayList<>();
 		Paciente paciente;
-		String sql = "select * from usuarios order by nomepaciente";
+		String sql = "select * from pacientes order by pk_paciente";
 
 		preparar = connection.prepareStatement(sql);
 
@@ -138,7 +138,7 @@ public class PacienteDAO implements ICRUD<Paciente> {
 
 		List<Paciente> lPacientes = new ArrayList<>();
 		Paciente paciente = null;
-		String sql = "select * from usuarios where nomepaciente like ?";
+		String sql = "select * from pacientes where nomepaciente like ?";
 
 		preparar = connection.prepareStatement(sql);
 		preparar.setString(1, "%" + nome + "%");

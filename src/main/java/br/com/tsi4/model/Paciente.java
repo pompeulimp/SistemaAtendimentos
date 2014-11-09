@@ -51,4 +51,12 @@ public class Paciente {
 		this.telefonePaciente = telefonePaciente;
 	}
 
+	@Override
+	public String toString() {
+		return "Paciente [pk_paciente=" + pk_paciente + ", nomePaciente="
+				+ nomePaciente + ", cpfPaciente=" + cpfPaciente
+				+ ", enderecoPaciente=" + enderecoPaciente
+				+ ", telefonePaciente=" + telefonePaciente + "]";
+	}
+
 }

@@ -30,7 +30,7 @@ public class EspecialidadesMedicaDAO implements ICRUD<EspecialidadeMedica> {
 	}
 
 	@Override
-	public boolean delete(EspecialidadeMedica obj) throws SQLException {
+	public boolean delete(long pkKey) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
