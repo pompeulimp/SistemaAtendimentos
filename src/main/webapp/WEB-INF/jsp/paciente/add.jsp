@@ -10,10 +10,10 @@
 	<form action="create">
 		<input type="hidden" name="paciente.pk_paciente" value="${paciente.pk_paciente}">
 		<input type="text" name="paciente.nomePaciente" value="${paciente.nomePaciente}" placeholder="nome">
-		<input type="text" name="paciente.cpfPaciente"  value="${paciente.cpfPaciente}" placeholder="cpf">
+		<input type="text" name="paciente.cpfPaciente"  maxlength="11" value="${paciente.cpfPaciente}" placeholder="cpf">
 		<input type="text" name="paciente.enderecoPaciente" value="${paciente.enderecoPaciente}" placeholder="endereço">
 		<input type="text" name="paciente.telefonePaciente" value="${paciente.telefonePaciente}" placeholder="telefone">
-		<input type="submit" name="gravar" />
+		<input type="submit" value="gravar" />
 	</form>
 </body>
 </html>
