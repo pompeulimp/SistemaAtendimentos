@@ -8,14 +8,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href="<c:url value="bootstrap/css/estilo.css"/>" rel="stylesheet"
+<link href="<c:url value="../bootstrap/css/estilo.css"/>" rel="stylesheet"
 	type="text/css" />
 
-<link href="<c:url value="bootstrap/css/bootstrap.css"/>"
+<link href="<c:url value="../bootstrap/css/bootstrap.css"/>"
 	rel="stylesheet" type="text/css" />
 
 <script type="text/javascript"
-	src="<c:url value="bootstrap/js/validacoesFomulario.js"/>"></script>
+	src="<c:url value="../bootstrap/js/validacoesFomulario.js"/>"></script>
 
 <title>Cadastro_Paciente</title>
 </head>
@@ -25,26 +25,24 @@
 		<div class="row" id="main-content">
 			<div class="well" align="center">
 				<div class="span4" id="sidebar">
-					<h1 class="text-muted">${paciente}</h1>
-
-					<form action="" id="cadastroPaciente" method="post">
+					<form action="create" id="cadastroPaciente">
 						<fieldset>
 							<legend></legend>
-
-							<input type="text" id="nome" placeholder="Nome Completo"
+							<input type="hidden" name="paciente.pk_paciente" value="${paciente.pk_paciente}">
+							<input type="text" id="nome" name="paciente.nomePaciente" value="${paciente.nomePaciente}"  placeholder="Nome Completo"
 								class="form-control" size="50" onblur="validacao('nome',false)">
-							<input type="text" id="cpf" placeholder="CPF"
+							<input type="text" id="cpf" name="paciente.cpfPaciente"  maxlength="11" value="${paciente.cpfPaciente}" placeholder="CPF"
 								class="form-control" size="50" onblur="validacao('cpf',false)">
-							<input type="text" id="endereco" placeholder="Endereço"
+							<input type="text" id="endereco"  name="paciente.enderecoPaciente" value="${paciente.enderecoPaciente}" placeholder="Endereço"
 								class="form-control" size="50"
 								onblur="validacao('endereco',false)"> <input type="text"
-								id="telefone" placeholder="Telefone" class="form-control"
+								id="telefone" name="paciente.telefonePaciente" value="${paciente.telefonePaciente}" placeholder="Telefone" class="form-control"
 								size="50" onblur="validacao('telefone',false)"> <br>
 							<input type="submit" id="enviar"
 								onclick=" return validaFormulario()" class="btn btn-warning"
 								value="Salvar">&nbsp;&nbsp;&nbsp; <input type="reset"
 								class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-							<a href="http://localhost:8080/vraptor-blank-project/">Voltar</a>
+							<a href="/sistemaantendimento">Voltar</a>
 						</fieldset>
 					</form>
 				</div>

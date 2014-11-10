@@ -1,11 +1,11 @@
 package br.com.tsi4.model;
 
-public class EspecialidadeMedica {
+public class Especialidade {
 	
 	private long pkEspecialidade;
 	private String descricao;
 
-	public EspecialidadeMedica() {
+	public Especialidade() {
 
 	}
 
@@ -25,4 +25,10 @@ public class EspecialidadeMedica {
 		this.descricao = descricao;
 	}
 
+	@Override
+	public String toString() {
+		return "Especialidade [pkEspecialidade=" + pkEspecialidade
+				+ ", descricao=" + descricao + "]";
+	}
+	
 }

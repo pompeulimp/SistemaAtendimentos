@@ -3,13 +3,13 @@ package br.com.tsi4.model;
 import java.util.List;
 
 public class Medico {
-	
+
 	private int pkMedico;
 	private String crm;
 	private String nomeMedico;
 	private String telMedico;
 	private String disponibilidade;
-	private List<EspecialidadeMedica> especialidades;
+	private List<Especialidade> especialidades;
 
 	public Medico() {
 
@@ -55,14 +55,25 @@ public class Medico {
 		this.disponibilidade = disponibilidade;
 	}
 
-	public List<EspecialidadeMedica> getEspecialidades() {
+	public List<Especialidade> getEspecialidades() {
 		return especialidades;
 	}
 
-	public void setEspecialidades(List<EspecialidadeMedica> especialidades) {
-		this.especialidades = especialidades;
+	/**
+	 * Recebe uma especialidade e adiciona a lista do medico
+	 * 
+	 * @param especialidade
+	 */
+	public void addEspecialidade(Especialidade especialidade) {
+		especialidades.add(especialidade);
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Medico [pkMedico=" + pkMedico + ", crm=" + crm
+				+ ", nomeMedico=" + nomeMedico + ", telMedico=" + telMedico
+				+ ", disponibilidade=" + disponibilidade + ", especialidades="
+				+ especialidades + "]";
+	}
 
 }

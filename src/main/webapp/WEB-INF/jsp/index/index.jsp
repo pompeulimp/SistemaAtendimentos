@@ -19,6 +19,10 @@
 	<input type="text">	
 	<input type="button" value="estilo do bootstrap" class="btn btn-primary">
 	<h2><a href="paciente/listar">Listar Pacientes</a></h2>
-	<h2><a href="paciente/add">Criar Paciente</a></h2>
+	<h2><a href="paciente/formulario">Criar Paciente</a></h2>
+	<h2><a href="medico/listar">Listar Medicos</a></h2>
+	<h2><a href="medico/formulario">Criar Medico</a></h2>
+	<h2><a href="especialidade/listar">Listar Especialidades</a></h2>
+	<h2><a href="especialidade/formulario">Criar Especialidades</a></h2>
 </body>
 </html>

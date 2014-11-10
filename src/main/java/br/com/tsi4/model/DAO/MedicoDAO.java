@@ -8,11 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.tsi4.model.Medico;
-import br.com.tsi4.model.Paciente;
 import br.com.tsi4.model.JDBC.Conectar;
 
-public class MedicoDAO implements ICRUD<Medico>{
-	
+public class MedicoDAO implements ICRUD<Medico> {
+
 	private Connection connection;
 	private PreparedStatement preparar;
 
@@ -22,32 +21,8 @@ public class MedicoDAO implements ICRUD<Medico>{
 
 	@Override
 	public long create(Medico obj) throws SQLException {
-		String sql = "insert into medicos (pk_medico,crm,nomemedico,telmedico,disponibilidade)"
-				+ "values (? ,? , ? , ?, ?)";
-
-		preparar = connection.prepareStatement(sql);
-		
-		preparar.setLong(1, obj.getPkMedico());
-		preparar.setString(2, obj.getCrm());
-		preparar.setString(3, obj.getNomeMedico());
-		preparar.setString(4, obj.getTelMedico());
-		preparar.setString(5, obj.getDisponibilidade());
-
-		preparar.execute();
-		ResultSet rs = preparar.getGeneratedKeys();
-
-		if (rs.next()) {
-			return rs.getInt(1);
-		}
-
-		return -1;
-	}
-
-
-	@Override
-	public long update(Medico obj) throws SQLException {
-		String sql = "update medicos set"
-				+ "(crm =? nomemedico=?,telmedico=?,disponibilidade=?)";
+		String sql = "insert into medicos (crm,nomemedico,telmedico,disponibilidade)"
+				+ "values (? , ? , ?, ?)";
 
 		preparar = connection.prepareStatement(sql);
 
@@ -55,6 +30,31 @@ public class MedicoDAO implements ICRUD<Medico>{
 		preparar.setString(2, obj.getNomeMedico());
 		preparar.setString(3, obj.getTelMedico());
 		preparar.setString(4, obj.getDisponibilidade());
+
+		preparar.execute();
+		
+		ResultSet rs = preparar.getGeneratedKeys();
+		preparar.close();
+		
+		if (rs.next()) {
+			return rs.getInt(1);
+		}
+
+		return -1;
+	}
+
+	@Override
+	public long update(Medico obj) throws SQLException {
+		String sql = "update medicos set crm =? nomemedico=?,telmedico=?,disponibilidade=? "
+				+ "where  pk_medico=?";
+
+		preparar = connection.prepareStatement(sql);
+
+		preparar.setString(1, obj.getCrm());
+		preparar.setString(2, obj.getNomeMedico());
+		preparar.setString(3, obj.getTelMedico());
+		preparar.setString(4, obj.getDisponibilidade());
+		preparar.setLong(5, obj.getPkMedico());
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
@@ -67,7 +67,7 @@ public class MedicoDAO implements ICRUD<Medico>{
 
 	@Override
 	public boolean delete(long pkKey) throws SQLException {
-		
+
 		String sql = "DELETE FROM medicos WHERE pk_medico=?";
 
 		preparar = connection.prepareStatement(sql);
@@ -130,7 +130,7 @@ public class MedicoDAO implements ICRUD<Medico>{
 		preparar.close();
 
 		return medico;
-	
+
 	}
 
 	@Override
@@ -157,7 +157,5 @@ public class MedicoDAO implements ICRUD<Medico>{
 
 		return lMedicos;
 	}
-
-	
 
 }

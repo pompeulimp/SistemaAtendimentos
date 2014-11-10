@@ -7,45 +7,47 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
-import br.com.tsi4.model.Medico;
+import br.com.tsi4.model.Especialidade;
+import br.com.tsi4.model.DAO.EspecialidadesMedicaDAO;
 import br.com.tsi4.model.DAO.ICRUD;
-import br.com.tsi4.model.DAO.MedicoDAO;
 
 @Controller
-public class MedicoController {
+public class EspecialidadeController {
 
 	@Inject
 	private Result result;
-	private ICRUD<Medico> icrud;
+	private ICRUD<Especialidade> icrud;
 	@Inject
-	private Medico medico;
+	private Especialidade especialidade;
 	private String mensagen = null;
 
-	public MedicoController() {
-		this.icrud = new MedicoDAO();
+	public EspecialidadeController() {
+		this.icrud = new EspecialidadesMedicaDAO();
 	}
 
 	public void formulario() {
 	}
 
-	public void create(Medico medico) {
+	public void create(Especialidade especialidade) {
+
 		try {
-			if (medico.getPkMedico() != 0) {
-				icrud.update(medico);
+			if (especialidade.getPkEspecialidade() != 0) {
+				icrud.update(especialidade);
 				mensagen = "atualisado";
 			} else {
-				icrud.create(medico);
+				icrud.create(especialidade);
 				mensagen = "criado";
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include("mensagem", "Medico " + mensagen + " com sucesso!");
+		result.include("mensagem", "Especialidade Medica " + mensagen
+				+ " com sucesso!");
 		result.redirectTo(this).listar();
 	}
 
-	public List<Medico> listar() {
+	public List<Especialidade> listar() {
 		try {
 
 			return icrud.restriveAll();
@@ -57,17 +59,18 @@ public class MedicoController {
 
 	public void editar(long pkKey) {
 		try {
-			medico = icrud.retriveOneByPkKey(pkKey);
+			especialidade = icrud.retriveOneByPkKey(pkKey);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include(medico);
+		result.include(especialidade);
 		result.of(this).formulario();
 	}
 
-	public void deletar(long pkKLey) {
+	public void deletar(long pkKey) {
+
 		try {
-			if (icrud.delete(pkKLey)) {
+			if (icrud.delete(pkKey)) {
 				mensagen = "deletado";
 			} else {
 				mensagen = "não econtroado";
@@ -75,7 +78,7 @@ public class MedicoController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include("mensagem", "Medico " + mensagen);
+		result.include("mensagem", "Especialidade Medica " + mensagen);
 		result.redirectTo(this).listar();
 	}
 }

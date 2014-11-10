@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link href="<c:url value="../bootstrap/css/estilo.css"/>"
@@ -15,20 +14,20 @@
 	
 <script type="text/javascript"
 	src="<c:url value="ootstrap/js/validacoesFomulario.js"/>"></script>
-<title>Lista Pacientes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Especialidades</title>
 </head>
 <body>
 	<c:if test="${not empty mensagem }">
 		${mensagem}
+		${especialidade.descricao}
 	</c:if>
-	<h3>Lista Pacientes</h3>
-	<a href="add">Novo Paciente</a>
-	<c:forEach items="${pacienteList}" var="paciente">
-		<div>${paciente.nomePaciente}
-			${paciente.cpfPaciente} ${paciente.enderecoPaciente}
-			${paciente.telefonePaciente}
-			<a href="${linkTo[PacienteController].editar}?pkKey=${paciente.pk_paciente}">Editar</a>		 
-			<a href="${linkTo[PacienteController].deletar}?pkKey=${paciente.pk_paciente}">deletar</a>
+	<h3>Lista Especialidades</h3>
+	<a href="formulario">Nova Especialidade</a>
+	<c:forEach items="${especialidadeList}" var="especialidade">
+		<div>${especialidade.descricao}			
+			<a href="${linkTo[EspecialidadeController].editar}?pkKey=${especialidade.pkEspecialidade}">Editar</a>		 
+			<a href="${linkTo[EspecialidadeController].deletar}?pkKey=${especialidade.pkEspecialidade}">deletar</a>
 		</div>
 	</c:forEach>
 </body>

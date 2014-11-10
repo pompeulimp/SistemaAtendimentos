@@ -2,7 +2,7 @@ package testBlackBox;
 
 import java.sql.SQLException;
 
-import br.com.tsi4.model.EspecialidadeMedica;
+import br.com.tsi4.model.Especialidade;
 import br.com.tsi4.model.Hospital;
 import br.com.tsi4.model.Medico;
 import br.com.tsi4.model.Usuario;

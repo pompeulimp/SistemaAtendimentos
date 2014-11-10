@@ -24,18 +24,18 @@ public class PacienteController {
 		this.icrud = new PacienteDAO();
 	}
 
-	public void add() {
+	public void formulario() {
 	}
 
-	public void editar(long pkKLey) {
+	public void editar(long pkKey) {
 		try {
-			this.paciente = icrud.retriveOneByPkKey(pkKLey);
+			this.paciente = icrud.retriveOneByPkKey(pkKey);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include(paciente);
-		result.of(this).add();
+		result.include(this.paciente);
+		result.of(this).formulario();
 	}
 
 	public void deletar(long pkKLey){
