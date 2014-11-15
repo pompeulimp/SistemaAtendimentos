@@ -8,101 +8,95 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.tsi4.model.Especialidade;
-
 import br.com.tsi4.model.JDBC.Conectar;
 
-public class EspMedicoDAO implements ICRUD<Especialidade>{
-	
+public class EspecialidadesDAO implements ICRUD<Especialidade> {
+
 	private Connection connection;
 	private PreparedStatement preparar;
 
-	public EspMedicoDAO() {
+	public EspecialidadesDAO() {
 		connection = Conectar.getConnection();
 	}
 
 	@Override
 	public long create(Especialidade obj) throws SQLException {
-		String sql = "insert into especialidades(pk_especialidade,descricao)"
-				+ "values (? , ?)";
 
+		String sql = "insert into especialidades (descricao) values (?)";
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkEspecialidade());
-		preparar.setString(2, obj.getDescricao());
-		
+
+		preparar.setString(1, obj.getDescricao());
+
 		preparar.execute();
+
 		ResultSet rs = preparar.getGeneratedKeys();
 
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
-
 		return -1;
 	}
 
 	@Override
 	public long update(Especialidade obj) throws SQLException {
-		String sql = "update especialidades set"
-				+ "(descricao=?)";
+		String sql = "update especialidades set descricao=? where pk_especialidade=?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getPkEspecialidade());
-		preparar.setString(2, obj.getDescricao());
-		
+		preparar.setString(1, obj.getDescricao());
+		preparar.setLong(2, obj.getPkEspecialidade());
+
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
 
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
-
 		return -1;
 	}
 
 	@Override
 	public boolean delete(long pkKey) throws SQLException {
-		String sql = "DELETE FROM especialidades WHERE id=?";
+
+		String sql = "delete from especialidades where pk_especialidade=?";
 
 		preparar = connection.prepareStatement(sql);
 		preparar.setLong(1, pkKey);
 		preparar.execute();
-		preparar.close();
 
 		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
 
 		return false;
-		
 	}
 
 	@Override
 	public List<Especialidade> restriveAll() throws SQLException {
-		List<Especialidade> lEspecialidadeMedica = new ArrayList<>();
-		Especialidade esp;
-		String sql = "select * from especialidades order by descricao";
+
+		List<Especialidade> especialidadeMedicas = new ArrayList<>();
+		Especialidade especialidadeMedica;
+
+		String sql = "select * from especialidades";
 
 		preparar = connection.prepareStatement(sql);
 
 		ResultSet rs = preparar.executeQuery();
 
 		while (rs.next()) {
-			 esp = new Especialidade();
-
-			esp.setPkEspecialidade(rs.getLong("pk_especialidade"));
-			esp.setDescricao(rs.getString("descricao"));
-			
-			lEspecialidadeMedica.add(esp);
+			especialidadeMedica = new Especialidade();
+			especialidadeMedica.setPkEspecialidade(rs
+					.getLong("pk_especialidade"));
+			especialidadeMedica.setDescricao(rs.getString("descricao"));
+			especialidadeMedicas.add(especialidadeMedica);
 		}
 		preparar.close();
 
-		return lEspecialidadeMedica;
+		return especialidadeMedicas;
 	}
 
 	@Override
-	public Especialidade retriveOneByPkKey(long pkKLey)
-			throws SQLException {
-		
-		Especialidade Esp = null;
+	public Especialidade retriveOneByPkKey(long pkKLey) throws SQLException {
+		Especialidade especialidadeMedica = null;
 
 		String sql = "select * from especialidades where pk_especialidade=?";
 
@@ -111,24 +105,20 @@ public class EspMedicoDAO implements ICRUD<Especialidade>{
 		ResultSet rs = preparar.executeQuery();
 
 		while (rs.next()) {
-			Esp = new Especialidade();
-			Esp.setPkEspecialidade(rs.getLong("pk_especialidade"));
-			Esp.setDescricao(rs.getString("descricao"));
-			
+			especialidadeMedica = new Especialidade();
+			especialidadeMedica.setPkEspecialidade(rs
+					.getLong("pk_especialidade"));
+			especialidadeMedica.setDescricao(rs.getString("descricao"));
+
 		}
 		preparar.close();
-
-		return Esp;
-		
-		
+		return especialidadeMedica;
 	}
 
 	@Override
-	public List<Especialidade> retriveByName(String nome)
-			throws SQLException {
-		
-		List<Especialidade> lEsp = new ArrayList<>();
-		Especialidade esp = null;
+	public List<Especialidade> retriveByName(String nome) throws SQLException {
+		List<Especialidade> especialidades = new ArrayList<>();
+		Especialidade especialidade = null;
 		String sql = "select * from especialidades where descricao like ?";
 
 		preparar = connection.prepareStatement(sql);
@@ -137,18 +127,15 @@ public class EspMedicoDAO implements ICRUD<Especialidade>{
 		ResultSet rs = preparar.executeQuery();
 
 		while (rs.next()) {
-			esp = new Especialidade();
-			esp.setPkEspecialidade(rs.getLong("pk_especialidade"));
-			esp.setDescricao(rs.getString("descricao"));
-			lEsp.add(esp);
+			especialidade = new Especialidade();
+			especialidade.setPkEspecialidade(rs.getLong("pk_especialidade"));
+			especialidade.setDescricao(rs.getString("descricao"));
+			especialidades.add(especialidade);
 		}
 		preparar.close();
 
-		return lEsp;
-		
+		return especialidades;
+
 	}
-
-
-	
 
 }

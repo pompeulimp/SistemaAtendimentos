@@ -30,7 +30,6 @@ public class PacienteController {
 	public void editar(long pkKey) {
 		try {
 			this.paciente = icrud.retriveOneByPkKey(pkKey);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -38,9 +37,9 @@ public class PacienteController {
 		result.of(this).formulario();
 	}
 
-	public void deletar(long pkKLey){
+	public void deletar(long pkKey){
 		try {
-			if(icrud.delete(pkKLey)){
+			if(icrud.delete(pkKey)){
 				mensagen = "deletado";
 			}else{
 				mensagen = "não econtroado";

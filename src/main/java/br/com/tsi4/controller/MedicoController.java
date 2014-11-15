@@ -65,9 +65,10 @@ public class MedicoController {
 		result.of(this).formulario();
 	}
 
-	public void deletar(long pkKLey) {
+	public void deletar(long pkKey) {
+		System.out.println(pkKey);
 		try {
-			if (icrud.delete(pkKLey)) {
+			if (icrud.delete(pkKey)) {
 				mensagen = "deletado";
 			} else {
 				mensagen = "não econtroado";

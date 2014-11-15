@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.tsi4.model.Especialidade;
-import br.com.tsi4.model.DAO.EspecialidadesMedicaDAO;
+import br.com.tsi4.model.DAO.EspecialidadesDAO;
 import br.com.tsi4.model.DAO.ICRUD;
 
 @Controller
@@ -22,13 +22,14 @@ public class EspecialidadeController {
 	private String mensagen = null;
 
 	public EspecialidadeController() {
-		this.icrud = new EspecialidadesMedicaDAO();
+		this.icrud = new EspecialidadesDAO();
 	}
 
 	public void formulario() {
 	}
 
 	public void create(Especialidade especialidade) {
+		System.out.println(especialidade.toString());
 
 		try {
 			if (especialidade.getPkEspecialidade() != 0) {
@@ -42,7 +43,7 @@ public class EspecialidadeController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include("mensagem", "Especialidade Medica " + mensagen
+		result.include("mensagem", "especialidade " + mensagen
 				+ " com sucesso!");
 		result.redirectTo(this).listar();
 	}
@@ -68,7 +69,7 @@ public class EspecialidadeController {
 	}
 
 	public void deletar(long pkKey) {
-
+		System.out.println(pkKey);
 		try {
 			if (icrud.delete(pkKey)) {
 				mensagen = "deletado";
@@ -78,7 +79,7 @@ public class EspecialidadeController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include("mensagem", "Especialidade Medica " + mensagen);
+		result.include("mensagem", "especialidade " + mensagen);
 		result.redirectTo(this).listar();
 	}
 }

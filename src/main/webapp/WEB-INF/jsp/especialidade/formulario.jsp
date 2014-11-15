@@ -27,7 +27,7 @@
 	<form action="create">
 	<fieldset>
  	<legend></legend>
-		<input type="hidden" name="${especialidade.pkEspecialidade}" >
+		<input type="text" name ="especialidade.pkEspecialidade" value="${especialidade.pkEspecialidade}" >
 		<input type="text" name ="especialidade.descricao" value="${especialidade.descricao}" class="form-control" size="50" placeholder="especialidade">
 		<input type="submit" id="enviar"  class="btn btn-warning" value="Gravar">
 		<input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;

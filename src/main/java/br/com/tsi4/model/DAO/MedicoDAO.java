@@ -45,7 +45,7 @@ public class MedicoDAO implements ICRUD<Medico> {
 
 	@Override
 	public long update(Medico obj) throws SQLException {
-		String sql = "update medicos set crm =? nomemedico=?,telmedico=?,disponibilidade=? "
+		String sql = "update medicos set crm =?, nomemedico=? ,telmedico=?, disponibilidade=? " 
 				+ "where  pk_medico=?";
 
 		preparar = connection.prepareStatement(sql);
@@ -55,8 +55,8 @@ public class MedicoDAO implements ICRUD<Medico> {
 		preparar.setString(3, obj.getTelMedico());
 		preparar.setString(4, obj.getDisponibilidade());
 		preparar.setLong(5, obj.getPkMedico());
-
 		preparar.execute();
+		
 		ResultSet rs = preparar.getGeneratedKeys();
 
 		if (rs.next()) {

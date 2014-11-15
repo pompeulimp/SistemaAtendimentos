@@ -13,7 +13,7 @@
 	rel="stylesheet" type="text/css" />
 	
 <script type="text/javascript"
-	src="<c:url value="ootstrap/js/validacoesFomulario.js"/>"></script>
+	src="<c:url value="ootstrap/js/_validacoesFomulario.js"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Especialidades</title>
 </head>

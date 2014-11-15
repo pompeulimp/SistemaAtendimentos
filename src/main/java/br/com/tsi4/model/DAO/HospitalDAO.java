@@ -8,12 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.tsi4.model.Hospital;
-import br.com.tsi4.model.Medico;
 import br.com.tsi4.model.JDBC.Conectar;
 
 public class HospitalDAO implements ICRUD<Hospital> {
-	
-	
+
 	private Connection connection;
 	private PreparedStatement preparar;
 
@@ -27,7 +25,7 @@ public class HospitalDAO implements ICRUD<Hospital> {
 				+ "values (?, ?, ? , ?, ?, ?, ?)";
 
 		preparar = connection.prepareStatement(sql);
-		
+
 		preparar.setLong(1, obj.getPkHospital());
 		preparar.setLong(2, obj.getPkFila());
 		preparar.setString(3, obj.getRazaosocial());
@@ -35,7 +33,6 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		preparar.setString(5, obj.getCnpj());
 		preparar.setString(6, obj.getEnderecoHospital());
 		preparar.setString(7, obj.getTelefonehospital());
-		
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
@@ -47,11 +44,9 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		return -1;
 	}
 
-
-
 	@Override
 	public long update(Hospital obj) throws SQLException {
-		
+
 		String sql = "update hospitais set"
 				+ "(pk_hospital =? pk_fila=?, razaosocial=?, nomefantasia=? , cnpj=?, endhospital=?,telefonehospital=?)";
 
@@ -63,8 +58,6 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		preparar.setString(4, obj.getCnpj());
 		preparar.setString(4, obj.getEnderecoHospital());
 		preparar.setString(4, obj.getTelefonehospital());
-		
-		
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
@@ -73,13 +66,12 @@ public class HospitalDAO implements ICRUD<Hospital> {
 			return rs.getInt(1);
 		}
 		return -1;
-		
-		
+
 	}
 
 	@Override
 	public boolean delete(long pkKey) throws SQLException {
-		
+
 		String sql = "DELETE FROM hospitais WHERE pk_hospital=?";
 
 		preparar = connection.prepareStatement(sql);
@@ -92,7 +84,7 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		}
 
 		return false;
-		
+
 	}
 
 	@Override
@@ -125,7 +117,7 @@ public class HospitalDAO implements ICRUD<Hospital> {
 
 	@Override
 	public Hospital retriveOneByPkKey(long pkKLey) throws SQLException {
-		
+
 		Hospital hospital = null;
 
 		String sql = "select * from hospitais where pk_hospital=?";
@@ -148,13 +140,12 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		preparar.close();
 
 		return hospital;
-		
-		
+
 	}
 
 	@Override
 	public List<Hospital> retriveByName(String nome) throws SQLException {
-		List<Hospital> lHospitais = new ArrayList<>();
+		List<Hospital> hospitais = new ArrayList<>();
 		Hospital hospital = null;
 		String sql = "select * from hospitais where razaosocial like ?";
 
@@ -172,13 +163,11 @@ public class HospitalDAO implements ICRUD<Hospital> {
 			hospital.setCnpj(rs.getString("cnpj"));
 			hospital.setEnderecoHospital(rs.getString("endhospital"));
 			hospital.setCnpj(rs.getString("telefonehospital"));
-			lHospitais.add(hospital);
+			hospitais.add(hospital);
 		}
 		preparar.close();
 
-		return lHospitais;
+		return hospitais;
 	}
-	
-	
 
 }
