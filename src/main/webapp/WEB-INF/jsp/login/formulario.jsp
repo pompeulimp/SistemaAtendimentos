@@ -8,29 +8,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Formulário de Login</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-<<<<<<< HEAD
-</head>
-<body>
-
-	<form action="<c:url value='/login/autentica'/>" method="post">
-		<h2 class="form-signin-heading">Faça login para acessar o Sistema de Atendimentos</h2>
-		<input type="text" class="form-control" name="usuario.nomeUsuario" placeholder="Nome"/>
-  		<input type="password" class="form-control" name="usuario.senha" placeholder="Senha"/>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-	
-	</form>
-=======
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            .bs-example{
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+           .bs-example{
                 margin: 20px;
             }
-        </style>
+    </style>
 </head>
-<body background='wall.jpg'>
+<body background='<c:url value="wall.jpg"/>'>
 <div class="container" style="width:75%;">    
                 <div id="divLogin" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
                     <div class="panel panel-info" >
@@ -140,7 +128,6 @@
                     </div>
                 </div> 
             </div>
->>>>>>> 7ddc9091b785501f364a52f461a0e5e8a2fbab7f
 	<c:if test="${not empty errors }">
 		<div class="alert alert-danger">
 			<c:forEach items="${errors }" var="erro">

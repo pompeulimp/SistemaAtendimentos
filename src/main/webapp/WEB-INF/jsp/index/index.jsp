@@ -23,19 +23,6 @@
 <title>Bem vindo ao Sistema de Atendimentos Web de Hospitais</title>
 </head>
 <body onload="startTime()">
-<<<<<<< HEAD
-	<h1>${wecan}</h1>
-	<h1 id="txt"></h1>
-	<input type="text">	
-	<input type="button" value="estilo do bootstrap" class="btn btn-primary">
-	<h2><a href="paciente/listar">Listar Pacientes</a></h2>
-	<h2><a href="paciente/formulario">Criar Paciente</a></h2>
-	<h2><a href="medico/listar">Listar Medicos</a></h2>
-	<h2><a href="medico/formulario">Criar Medico</a></h2>
-	<h2><a href="especialidade/listar">Listar Especialidades</a></h2>
-	<h2><a href="especialidade/formulario">Criar Especialidades</a></h2>
-=======
-	
 	        <div class="bs-example">
             <nav id="myNavbar" class="navbar navbar-default" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -83,7 +70,5 @@
                 </div>
             </nav>
         </div>
-	
->>>>>>> 7ddc9091b785501f364a52f461a0e5e8a2fbab7f
 </body>
 </html>
