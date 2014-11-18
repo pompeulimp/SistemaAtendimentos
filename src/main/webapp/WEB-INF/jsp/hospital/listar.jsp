@@ -15,22 +15,22 @@
 <script type="text/javascript"
 	src="<c:url value="ootstrap/js/validacoesFomulario.js"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista Unidades de Atendimento Hospitalar</title>
+<title>Lista de Unidades</title>
 </head>
 <body>
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
-	<h3>Lista Unidades de Atendimento Hospitalar</h3>
-	<a href="formulario">Nova Unidade Hospitalar</a>
+	<h3>Lista Unidades</h3>
+	<a href="formulario">Novo Hospital</a>
 	<c:forEach items="${hospitalList}" var="hospital">
 		<div>${hospital.razaosocial}
 			${hospital.nomeFantasia}
 			${hospital.cnpj}
 			${hospital.enderecoHospital}
 			${hospital.telefonehospital}
-			<a href="${linkTo[HospitalController].editar}?pkKey=${hospital.pkHospital}">Editar</a>		 
-			<a href="${linkTo[HospitalController].deletar}?pkKey=${hospital.pkHospital}">deletar</a>
+			<a href="${linkTo[hospitalController].editar}?pkKey=${hospital.pkHospital}">Editar</a>		 
+			<a href="${linkTo[hospitalController].deletar}?pkKey=${hospital.pkHospital}">deletar</a>
 		</div>
 	</c:forEach>
 </body>

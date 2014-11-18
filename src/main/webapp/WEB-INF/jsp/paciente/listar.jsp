@@ -22,7 +22,7 @@
 		${mensagem}
 	</c:if>
 	<h3>Lista Pacientes</h3>
-	<a href="add">Novo Paciente</a>
+	<a href="formulario">Novo Paciente</a>
 	<c:forEach items="${pacienteList}" var="paciente">
 		<div>${paciente.nomePaciente}
 			${paciente.cpfPaciente} ${paciente.enderecoPaciente}

@@ -15,7 +15,7 @@
 	rel="stylesheet" type="text/css" />
 
 <script type="text/javascript"
-	src="<c:url value="../bootstrap/js/validacoesFomulario.js"/>"></script>
+	src="<c:url value="../bootstrap/js/_validacoesFomulario.js"/>"></script>
 
 <title>Cadastro_Paciente</title>
 </head>

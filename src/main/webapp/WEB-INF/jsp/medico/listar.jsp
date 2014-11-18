@@ -21,7 +21,7 @@
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
-	<h3>Lista Pacientes</h3>
+	<h3>Lista Medicos</h3>
 	<a href="formulario">Novo Medico</a>
 	<c:forEach items="${medicoList}" var="medico">
 		<div>${medico.nomeMedico}

@@ -11,7 +11,7 @@ public class Hospital {
 	private String cnpj;
 	private String enderecoHospital;
 	private String telefonehospital;
-	private Queue<Paciente>filaAtendimento;
+	private Queue<Paciente> filaAtendimento;
 	
 	public Hospital() {
 
@@ -79,14 +79,6 @@ public class Hospital {
 
 	public void setFilaAtendimento(Queue<Paciente> filaAtendimento) {
 		this.filaAtendimento = filaAtendimento;
-	}
-	
-	@Override
-	public String toString() {
-		return "Hospital [pkHospital=" + pkHospital + ", razaosocila=" + razaosocial
-				+ ", nomeFantasia=" + nomeFantasia + ", cnpj=" + cnpj
-				+ ", enderecoHospital=" + enderecoHospital + ", telefonehospital="
-				+ telefonehospital + ", filaAtendimento =" + filaAtendimento +"]";
 	}
 	
 }

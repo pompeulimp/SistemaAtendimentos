@@ -1,8 +1,5 @@
 package br.com.tsi4.model;
 
-import java.util.Date;
-
-import com.sun.jmx.snmp.Timestamp;
 
 public class Atendimento {
 	

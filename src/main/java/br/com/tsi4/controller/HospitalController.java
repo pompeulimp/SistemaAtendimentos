@@ -8,12 +8,12 @@ import javax.inject.Inject;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
 import br.com.tsi4.model.Hospital;
-import br.com.tsi4.model.DAO.HospitalDAO;
+
 import br.com.tsi4.model.DAO.ICRUD;
+import br.com.tsi4.model.DAO.HospitalDAO;
 
 @Controller
 public class HospitalController {
-
 	@Inject
 	private Result result;
 	private ICRUD<Hospital> icrud;
@@ -28,49 +28,22 @@ public class HospitalController {
 	public void formulario() {
 	}
 
-	public void create(Hospital hospital) {
-		try {
-			if (hospital.getPkHospital() != 0) {
-				icrud.update(hospital);
-				mensagen = "Cadastro atualizado com Sucesso";
-			} else {
-				icrud.create(hospital);
-				mensagen = "Unidade criada com Sucesso";
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		result.include("mensagem", "Hospital " + mensagen + " com sucesso!");
-		result.redirectTo(this).listar();
-	}
-
-	public List<Hospital>listar() {
-		try {
-
-			return icrud.restriveAll();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public void editar(long pkKey) {
 		try {
-			hospital = icrud.retriveOneByPkKey(pkKey);
+			this.hospital = icrud.retriveOneByPkKey(pkKey);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include(hospital);
+		result.include(this.hospital);
 		result.of(this).formulario();
 	}
 
-	public void deletar(long pkKLey) {
+	public void deletar(long pkKey){
 		try {
-			if (icrud.delete(pkKLey)) {
-				mensagen = "deletado com sucesso !";
-			} else {
-				mensagen = " Unidade não econtrada!";
+			if(icrud.delete(pkKey)){
+				mensagen = "deletado";
+			}else{
+				mensagen = "não econtroado";
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,4 +51,33 @@ public class HospitalController {
 		result.include("mensagem", "Hospital " + mensagen);
 		result.redirectTo(this).listar();
 	}
+
+	public void create(Hospital hospital) {
+
+		try {
+			if (hospital.getPkHospital() != 0) {
+				icrud.update(hospital);
+				mensagen = "atualisado";
+			} else {
+				icrud.create(hospital);
+				mensagen = "criado";
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		result.include("mensagem", "Hospital " + mensagen + " com sucesso!");
+		result.redirectTo(this).listar();
+	}
+
+	public List<Hospital>listar() {
+		try {
+			return icrud.restriveAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
