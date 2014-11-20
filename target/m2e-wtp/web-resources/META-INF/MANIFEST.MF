@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: PauloE
-Build-Jdk: 1.8.0_20
+Built-By: pompeu
+Build-Jdk: 1.8.0_25
 Created-By: Maven Integration for Eclipse
 

@@ -40,7 +40,7 @@
  <br>
  <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-warning" value="Salvar">&nbsp;&nbsp;&nbsp;
  <input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
- <a href="http://localhost:8080/vraptor-blank-project/">Voltar</a>
+ <a href="/sistemaatendimento">Voltar</a>
 </fieldset>
  </form>
  </div>
