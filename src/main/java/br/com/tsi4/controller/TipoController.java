@@ -7,46 +7,48 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Result;
-import br.com.tsi4.model.Hospital;
-import br.com.tsi4.model.DAO.HospitalDAO;
+import br.com.tsi4.model.Tipo;
 import br.com.tsi4.model.DAO.ICRUD;
+import br.com.tsi4.model.DAO.TipoDAO;
 
 
 @Controller
-public class HospitalController {
+public class TipoController {
 
 	@Inject
 	private Result result;
-	private ICRUD<Hospital> icrud;
+	private ICRUD<Tipo> icrud;
 	@Inject
-	private Hospital hospital;
+	private Tipo tipo;
 	private String mensagen = null;
 
-	public HospitalController() {
-		this.icrud = new HospitalDAO();
+	public TipoController() {
+		this.icrud = new TipoDAO();
 	}
 
 	public void formulario() {
 	}
 
-	public void create(Hospital hospital) {
+	public void create(Tipo tipo) {
+
 		try {
-			if (hospital.getPkHospital() != 0) {
-				icrud.update(hospital);
+			if (tipo.getPkTipoAtendimento() != 0) {
+				icrud.update(tipo);
 				mensagen = "atualizado";
 			} else {
-				icrud.create(hospital);
+				icrud.create(tipo);
 				mensagen = "criado";
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include("mensagem", "Hospital " + mensagen + " com sucesso!");
+		result.include("mensagem", "Tipo" + mensagen
+				+ " com sucesso!");
 		result.redirectTo(this).listar();
 	}
 
-	public List<Hospital> listar() {
+	public List<Tipo> listar() {
 		try {
 
 			return icrud.restriveAll();
@@ -58,11 +60,11 @@ public class HospitalController {
 
 	public void editar(long pkKey) {
 		try {
-			hospital = icrud.retriveOneByPkKey(pkKey);
+			tipo = icrud.retriveOneByPkKey(pkKey);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include(hospital);
+		result.include(tipo);
 		result.of(this).formulario();
 	}
 
@@ -77,7 +79,7 @@ public class HospitalController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		result.include("mensagem", "Hospital " + mensagen);
+		result.include("mensagem", "Tipo" + mensagen);
 		result.redirectTo(this).listar();
 	}
 }
