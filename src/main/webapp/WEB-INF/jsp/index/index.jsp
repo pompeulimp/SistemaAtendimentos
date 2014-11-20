@@ -34,7 +34,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Nome do Sistema</a>
+                        <a class="navbar-brand" href="#">SAA - Sistema de Agendamento de Atendimentos</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -45,8 +45,9 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="paciente/formulario"><i class="fa fa-user"></i>&nbsp;Paciente</a></li>
                                     <li><a href="medico/formulario"><i class="fa fa-user-md"></i>&nbsp;Médico</a></li>
-                                    <li><a href="hospital/hospital"><i class="fa fa-plus"></i>&nbsp;Hospital</a></li>
+                                    <li><a href="hospital/formulario"><i class="fa fa-plus"></i>&nbsp;Hospital</a></li>
                                     <li><a href="especialidade/formulario"><i class="fa fa-plus"></i>&nbsp;Especialidade</a></li>
+                                    <li><a href="tipo/formulario"><i class="fa fa-plus"></i>&nbsp;Tipo de Atendimento</a></li>
                                 </ul>
                             </li>
                             <li><a href=""><i class="fa fa-medkit"></i>&nbsp;Marcar Consulta</a></li>
@@ -56,7 +57,10 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="paciente/listar"><i class="fa fa-user"></i>&nbsp;Paciente</a></li>
                                     <li><a href="medico/listar"><i class="fa fa-user-md"></i>&nbsp;Médico</a></li>
-                                    <li><a href="#"><i class="fa fa-plus"></i>&nbsp;Hospital</a></li>
+                                    <li><a href="hospital/listar"><i class="fa fa-plus"></i>&nbsp;Hospital</a></li>
+                                    <li><a href="especialidade/listar"><i class="fa fa-plus"></i>&nbsp;Especialidade</a></li>
+                                    <li><a href="tipo/listar"><i class="fa fa-plus"></i>&nbsp;Tipo de Atendiemnto</a></li>
+                                    
                                 </ul>
                             </li>
                             <li><a href=""><i class="fa fa-file"></i>&nbsp;Relatórios</a></li>
@@ -64,7 +68,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Ajuda&nbsp;<i class="fa fa-question"></i></a></li>
                             <li><a href="#">Deslogar&nbsp;<i class="fa fa-sign-out"></i></a></li>
-                            <li><p id="txt"></p></li>
+                            <li><p id="txt"></p></li> 
                         </ul>
                     </div>
                 </div>

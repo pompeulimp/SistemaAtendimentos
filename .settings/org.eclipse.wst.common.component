@@ -4,7 +4,12 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/WEB-INF/jsp"/>
         <property name="java-output-path" value="/SistemaAtendimentos/src/main/webapp/WEB-INF/classes"/>
+<<<<<<< HEAD
         <property name="context-root" value="sistemaatendimento"/>
+=======
+        <property name="context-root" value="vraptor-blank-project"/>
+>>>>>>> ae45c6135ee7b5408d4aba957ef42a1c57c1938a
     </wb-module>
 </project-modules>
