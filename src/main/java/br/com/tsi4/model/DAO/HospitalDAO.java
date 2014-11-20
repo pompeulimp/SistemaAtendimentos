@@ -21,18 +21,19 @@ public class HospitalDAO implements ICRUD<Hospital> {
 
 	@Override
 	public long create(Hospital obj) throws SQLException {
-		String sql = "insert into hospitais (pk_hospital,pk_fila,razaosocial,nomefantasia,cnpj,endhospital,telefonehospital)"
-				+ "values (?, ?, ? , ?, ?, ?, ?)";
+		String sql = "insert into hospitais (pk_fila,razaosocial,nomefantasia,cnpj,endhospital,telefonehospital)"
+				+ "values (?, ? , ?, ?, ?, ?)";
 
 		preparar = connection.prepareStatement(sql);
 
-		preparar.setLong(1, obj.getPkHospital());
-		preparar.setLong(2, obj.getPkFila());
-		preparar.setString(3, obj.getRazaosocial());
-		preparar.setString(4, obj.getNomeFantasia());
-		preparar.setString(5, obj.getCnpj());
-		preparar.setString(6, obj.getEnderecoHospital());
-		preparar.setString(7, obj.getTelefonehospital());
+
+
+		preparar.setLong(1, obj.getPkFila());
+		preparar.setString(2, obj.getRazaosocial());
+		preparar.setString(3, obj.getNomeFantasia());
+		preparar.setString(4, obj.getCnpj());
+		preparar.setString(5, obj.getEnderecoHospital());
+		preparar.setString(6, obj.getTelefonehospital());
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
