@@ -42,7 +42,7 @@
 								onclick=" return validaFormulario()" class="btn btn-warning"
 								value="Salvar">&nbsp;&nbsp;&nbsp; <input type="reset"
 								class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-							<a href="/sistemaantendimento">Voltar</a>
+							<a href="/sistemaatendimento">Voltar</a>
 						</fieldset>
 					</form>
 				</div>

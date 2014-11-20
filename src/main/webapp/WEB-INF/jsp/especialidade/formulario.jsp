@@ -31,7 +31,7 @@
 		<input type="text" name ="especialidade.descricao" value="${especialidade.descricao}" class="form-control" size="50" placeholder="especialidade">
 		<input type="submit" id="enviar"  class="btn btn-warning" value="Gravar">
 		<input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-		<a href="/sistemaantendimento">Voltar</a>
+		<a href="/sistemaatendimento">Voltar</a>
 	</fieldset>	
 	</form>
  </div>

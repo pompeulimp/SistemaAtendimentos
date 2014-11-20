@@ -2,14 +2,13 @@ package br.com.tsi4.model;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private long pkUsuario;
-	private long pkHospital;
-	private String nomeusuario;
+	private String nomeUsuario;
 	private String senha;
-	private String nivelusuario;
+	private String nivelUsuario;
 
 	public Usuario() {
 
@@ -23,20 +22,12 @@ public class Usuario implements Serializable{
 		this.pkUsuario = pkUsuario;
 	}
 
-	public long getPkHospital() {
-		return pkHospital;
-	}
-
-	public void setPkHospital(long pkHospital) {
-		this.pkHospital = pkHospital;
-	}
-
 	public String getNomeUsuario() {
-		return nomeusuario;
+		return nomeUsuario;
 	}
 
-	public void setNomeUsuario(String nomeusuario) {
-		this.nomeusuario = nomeusuario;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
 	public String getSenha() {
@@ -47,12 +38,18 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 
-	public String getNivelusuario() {
-		return nivelusuario;
+	public String getNivelUsuario() {
+		return nivelUsuario;
 	}
 
-	public void setNivelusuario(String nivelusuario) {
-		this.nivelusuario = nivelusuario;
+	public void setNivelUsuario(String nivelUsuario) {
+		this.nivelUsuario = nivelUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [pkUsuario=" + pkUsuario + ", nomeUsuario="
+				+ nomeUsuario + ", senha=" + senha + ", nivelUsuario="
+				+ nivelUsuario + "]";
+	}
 }
