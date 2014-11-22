@@ -6,18 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link href="<c:url value="../bootstrap/css/estilo.css"/>"
-	rel="stylesheet" type="text/css" />
-	
-<link href="<c:url value="../bootstrap/css/bootstrap.css"/>"
-	rel="stylesheet" type="text/css" />
-	
-<script type="text/javascript"
-	src="<c:url value="ootstrap/js/validacoesFomulario.js"/>"></script>
+	<c:import url="../include/javascripts.jsp"></c:import>
+	<c:import url="../include/css.jsp"></c:import>	
 <title>Lista Tipo de Atendimento</title>
 </head>
 <body>
+<c:import url="../include/menu.jsp"></c:import>
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
@@ -30,5 +24,6 @@
 			<a href="${linkTo[TipoController].deletar}?pkKey=${tipo.pkTipoAtendimento}">deletar</a>
 		</div>
 	</c:forEach>
+	<a href="<c:url value="/"/>">Voltar</a>
 </body>
 </html>

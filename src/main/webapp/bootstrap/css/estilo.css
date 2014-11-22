@@ -1,5 +1,6 @@
 body{
-    background: black;
+    background: url("../imagens/wall.jpg") repeat;
+    backgroud-color: red;
     font-size: 15px;
     color: greenyellow;
 }
@@ -37,3 +38,7 @@ input{
 		.15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.bs-example{
+      margin: 20px;
+ }
+    

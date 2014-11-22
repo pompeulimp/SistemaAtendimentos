@@ -7,18 +7,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Formulário de Login</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<c:import url="../include/javascripts.jsp"></c:import>
+	<c:import url="../include/css.jsp"></c:import>	
     <style type="text/css">
            .bs-example{
                 margin: 20px;
             }
     </style>
 </head>
-<body background='<c:url value="wall.jpg"/>'>
+<body>
 <div class="container" style="width:75%;">    
                 <div id="divLogin" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
                     <div class="panel panel-info" >

@@ -5,19 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link href="<c:url value="../bootstrap/css/estilo.css"/>"
-	rel="stylesheet" type="text/css" />
-	
-<link href="<c:url value="../bootstrap/css/bootstrap.css"/>"
-	rel="stylesheet" type="text/css" />
-	
-<script type="text/javascript"
-	src="<c:url value="ootstrap/js/_validacoesFomulario.js"/>"></script>
+	<c:import url="../include/javascripts.jsp"></c:import>
+	<c:import url="../include/css.jsp"></c:import>	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Especialidades</title>
 </head>
 <body>
+<c:import url="../include/menu.jsp"></c:import>
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 		${especialidade.descricao}
@@ -30,5 +24,6 @@
 			<a href="${linkTo[EspecialidadeController].deletar}?pkKey=${especialidade.pkEspecialidade}">deletar</a>
 		</div>
 	</c:forEach>
+	<a href="<c:url value="/"/>">Voltar</a>
 </body>
 </html>
