@@ -5,23 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<c:import url="../include/javascripts.jsp"></c:import>
 	<c:import url="../include/css.jsp"></c:import>	
-<title>Lista Pacientes</title>
+<title>Lista Tipo de Atendimento</title>
 </head>
 <body>
-<c:import url="../include/menu.jsp"></c:import>	
+<c:import url="../include/menu.jsp"></c:import>
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
-	<h3>Lista Pacientes</h3>
-	<a href="formulario">Novo Paciente</a>
-	<c:forEach items="${pacienteList}" var="paciente">
-		<div>${paciente.nomePaciente}
-			${paciente.cpfPaciente} ${paciente.enderecoPaciente}
-			${paciente.telefonePaciente}
-			<a href="${linkTo[PacienteController].editar}?pkKey=${paciente.pk_paciente}">Editar</a>		 
-			<a href="${linkTo[PacienteController].deletar}?pkKey=${paciente.pk_paciente}">deletar</a>
+	<h3>Lista Tipo de Atendimento</h3>
+	<a href="formulario">Tipo de Atendimento</a>
+	<c:forEach items="${tipoList}" var="tipo">
+		<div>${tipo.descricaoTipo}
+			${tipo.tempoEstimado}
+			<a href="${linkTo[TipoController].editar}?pkKey=${tipo.pkTipoAtendimento}">Editar</a>		 
+			<a href="${linkTo[TipoController].deletar}?pkKey=${tipo.pkTipoAtendimento}">deletar</a>
 		</div>
 	</c:forEach>
 	<a href="<c:url value="/"/>">Voltar</a>

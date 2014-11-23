@@ -5,27 +5,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 	<c:import url="../include/javascripts.jsp"></c:import>
 	<c:import url="../include/css.jsp"></c:import>	
-<script type="text/javascript"
-	src="<c:url value="ootstrap/js/validacoesFomulario.js"/>"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista de Medicos</title>
+<title>Lista de Unidades Hospitalares</title>
 </head>
 <body>
 <c:import url="../include/menu.jsp"></c:import>
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
-	<h3>Lista Medicos</h3>
-	<a href="formulario">Novo Medico</a>
-	<c:forEach items="${medicoList}" var="medico">
-		<div>${medico.nomeMedico}
-			${medico.crm}
-			${medico.telMedico}
-			${medico.disponibilidade}
-			<a href="${linkTo[MedicoController].editar}?pkKey=${medico.pkMedico}">Editar</a>		 
-			<a href="${linkTo[MedicoController].deletar}?pkKey=${medico.pkMedico}">deletar</a>
+	<h3>Lista Unidades</h3>
+	<a href="formulario">Nova Unidade Hospitalar</a>
+	<c:forEach items="${hospitalList}" var="hospital">
+		<div>${hospital.razaosocial}
+			${hospital.nomeFantasia}
+			${hospital.cnpj}
+			${hospital.enderecoHospital}
+			${hospital.telefonehospital}
+			<a href="${linkTo[HospitalController].editar}?pkKey=${hospital.pkHospital}">Editar</a>		 
+			<a href="${linkTo[HospitalController].deletar}?pkKey=${hospital.pkHospital}">deletar</a>
 		</div>
 	</c:forEach>
 	<a href="<c:url value="/"/>">

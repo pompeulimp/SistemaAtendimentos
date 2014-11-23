@@ -1,8 +1,5 @@
 package br.com.tsi4.controller;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -15,7 +12,6 @@ public class IndexController {
 	
 	@Path("/")
 	public void index(){
-		result.include("wecan", "Paulo Pompeu Marcelo Kbral Commiters ");
-		result.include("data", new Date(Calendar.getInstance().getTimeInMillis()));		
+		
 	}
 }

@@ -39,15 +39,15 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 
 	@Override
 	public long create(Usuario obj) throws SQLException {
-		String sql = "insert into usuarios(pk_hospital,nomeusuario,senha,nivelusuario)"
-				+ "values (? , ? , ? , ?)";
+		String sql = "insert into usuarios(nomeusuario,senha,nivelusuario)"
+				+ "values (? , ? , ? )";
 
 		preparar = connection.prepareStatement(sql);
 
-		preparar.setLong(1, obj.getPkHospital());
-		preparar.setString(2, obj.getNomeUsuario());
-		preparar.setString(3, obj.getSenha());
-		preparar.setString(4, obj.getNivelusuario());
+		
+		preparar.setString(1, obj.getNomeUsuario());
+		preparar.setString(2, obj.getSenha());
+		preparar.setString(3, obj.getNivelUsuario());
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
@@ -61,13 +61,14 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 
 	@Override
 	public long update(Usuario obj) throws SQLException {
-		String sql = "update usuarios set"
-				+ "(nomeusuario=?,senha=?,nivelusuario=?)";
+		String sql = "update usuarios set nomeusuario=? , senha=? , nivelusuario=? where pk_usuario=?";
+		
 		preparar = connection.prepareStatement(sql);
 
 		preparar.setString(1, obj.getNomeUsuario());
 		preparar.setString(2, obj.getSenha());
-		preparar.setString(3, obj.getNivelusuario());
+		preparar.setString(3, obj.getNivelUsuario());
+		preparar.setLong(4, obj.getPkUsuario());
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
 
@@ -111,10 +112,9 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 			usuario = new Usuario();
 
 			usuario.setPkUsuario(rs.getLong("pk_usuario"));
-			usuario.setPkHospital(rs.getLong("pk_hospital"));
-			usuario.setNomeUsuario(rs.getNString("nomeusuario"));
-			usuario.setSenha(rs.getNString("senha"));
-			usuario.setNivelusuario(rs.getNString("nivelusuario"));
+			usuario.setNomeUsuario(rs.getString("nomeusuario"));
+			usuario.setSenha(rs.getString("senha"));
+			usuario.setNivelUsuario(rs.getString("nivelusuario"));
 
 			lisUsuarios.add(usuario);
 		}
@@ -136,11 +136,10 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 
 		while (rs.next()) {
 			usuario = new Usuario();
-			usuario.setPkHospital(rs.getLong("pk_hospital"));
 			usuario.setPkUsuario(rs.getLong("pk_usuario"));
 			usuario.setNomeUsuario(rs.getString("nomeUsuario"));
 			usuario.setSenha(rs.getString("senha"));
-			usuario.setNivelusuario(rs.getString("nivelusuario"));
+			usuario.setNivelUsuario(rs.getString("nivelusuario"));
 
 		}
 		preparar.close();
@@ -163,10 +162,9 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 		while (rs.next()) {
 			usuario = new Usuario();
 			usuario.setPkUsuario(rs.getLong("pk_usuario"));
-			usuario.setPkHospital(rs.getLong("pk_hospital"));
-			usuario.setNomeUsuario(rs.getNString("nomeusuario"));
-			usuario.setSenha(rs.getNString("senha"));
-			usuario.setNivelusuario(rs.getNString("nivelusuario"));
+			usuario.setNomeUsuario(rs.getString("nomeusuario"));
+			usuario.setSenha(rs.getString("senha"));
+			usuario.setNivelUsuario(rs.getString("nivelusuario"));
 
 			lisUsuarios.add(usuario);
 		}

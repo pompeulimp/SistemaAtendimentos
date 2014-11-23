@@ -8,20 +8,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href="<c:url value="../bootstrap/css/estilo.css"/>"
-	rel="stylesheet" type="text/css" />
-	
-<link href="<c:url value="../bootstrap/css/bootstrap.css"/>"
-	rel="stylesheet" type="text/css" />
-	
-<script type="text/javascript"
-	src="<c:url value="ootstrap/js/validacoesFomulario.js"/>"></script>
+	<c:import url="../include/javascripts.jsp"></c:import>
+	<c:import url="../include/css.jsp"></c:import>	
 
 <title>CadastroMedicos</title>
 </head>
 
 <body>
-
+<c:import url="../include/menu.jsp"></c:import>
 <div class="container">
 <div class="row" id="main-content">
 <div class="well" align="center">
@@ -49,7 +43,7 @@
  <br>
  <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-warning" value="Salvar">&nbsp;&nbsp;&nbsp;
  <input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
- <a href="/sistemaantendimento">Voltar</a>
+ <a href="<c:url value="/"/>">Voltar</a>
 </fieldset>
  </form>
  </div>

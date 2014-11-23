@@ -11,7 +11,6 @@ public class TestaLogin {
 		Usuario usuario = new Usuario();
 		UsuarioDAO dao = new UsuarioDAO();
 		usuario.setPkUsuario(1);
-		usuario.setPkHospital(1);
 		usuario.setNomeUsuario("admin");
 		usuario.setSenha("admin");
 		
