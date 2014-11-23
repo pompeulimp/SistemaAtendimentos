@@ -54,11 +54,5 @@ public class LoginController {
 		
 	}
 	
-	public void logout(){
-		usuarioLogado.logout();
-		result.redirectTo(LoginController.class).formulario();
-		
-	}
-	
 
 }
