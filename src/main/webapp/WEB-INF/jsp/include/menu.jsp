@@ -46,7 +46,7 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Ajuda&nbsp;<i class="fa fa-question"></i></a></li>
-                            <li><a href="#">Deslogar&nbsp;<i class="fa fa-sign-out"></i></a></li>
+                            <li><a href=<c:url value='/login/logout'/>>Deslogar&nbsp;<i class="fa fa-sign-out"></i></a></li>
                             <li><p id="txt"></p></li> 
                         </ul>
                     </div>
