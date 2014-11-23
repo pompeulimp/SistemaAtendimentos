@@ -10,7 +10,7 @@ public class FilaTestDAO {
 	
 	private ICRUD<Fila> FilaIcrud = new FilaDAO();
 
-	private Fila obj = new Fila();
+	//private Fila obj = new Fila();
 	
 
 	public static void main(String[] args){
@@ -22,10 +22,10 @@ public class FilaTestDAO {
 		}
 	}
 	public  void cadastrarFila() throws SQLException{
-		obj.setPk_fila(3);
-		obj.setPk_atendimento(3);
-		long pkkey = FilaIcrud.create(obj);
-		System.out.println("Fila cadastrada com sucesso"+pkkey);
+//		obj.setPk_fila(3);
+//		obj.setPk_atendimento(3);
+//		long pkkey = FilaIcrud.create(obj);
+//		System.out.println("Fila cadastrada com sucesso"+pkkey);
 	}
 	
 
