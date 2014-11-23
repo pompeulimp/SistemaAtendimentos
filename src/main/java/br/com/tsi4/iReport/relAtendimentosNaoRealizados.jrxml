@@ -6,7 +6,7 @@
 	<queryString>
 		<![CDATA[select * from (select * from atendimentos a join pacientes p
 on p.pk_paciente=a.pk_paciente join medicos m
-on a.pk_medico=m.pk_medico  where status='S') as reldiario
+on a.pk_medico=m.pk_medico  where status='N') as reldiario
 where dataincicio between '2012-12-21 00:00:00' and  '2012-12-21 23:59:59']]>
 	</queryString>
 	<field name="pk_atendimento" class="java.lang.Integer"/>
