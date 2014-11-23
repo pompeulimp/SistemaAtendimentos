@@ -12,7 +12,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <!--<a class="navbar-brand" href="#">SAA - Sistema de Agendamento de Atendimentos</a>-->
+                        <a class="navbar-brand" href="#">SAA - Sistema de Agendamento de Atendimentos</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -42,7 +42,12 @@
                                     <li><a href="<c:url value="/tipo/listar"/>"><i class="fa fa-plus"></i>&nbsp;Tipo de Atendiemnto</a></li>
                                 </ul>
                             </li>
-                            <li><a href=""><i class="fa fa-file"></i>&nbsp;Relatórios</a></li>
+                            <li class="dropdown">
+                             <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-list-ul"></i>&nbsp;Relátorios <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                            <li><a href="<c:url value="/relatorioatendimento/formulario"/>"><i class="fa fa-file"></i>&nbsp;Relatórios de Atendimentos</a></li>
+                             </ul>
+                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Ajuda&nbsp;<i class="fa fa-question"></i></a></li>
