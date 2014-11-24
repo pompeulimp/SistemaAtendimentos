@@ -25,8 +25,8 @@ public class Fila {
 	}
 
 	/**
-	 * * esse contrutor recebe todos paramentros para criar um objeto completo
-	 * que vem do banco de dados
+	 * * 	esse contrutor recebe todos paramentros para criar um objeto completo
+	 * 		que vem do banco de dados
 	 * 
 	 * @param pkFila
 	 * @param pkPaciente

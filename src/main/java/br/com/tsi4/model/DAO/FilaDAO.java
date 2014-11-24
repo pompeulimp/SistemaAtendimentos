@@ -1,7 +1,6 @@
 package br.com.tsi4.model.DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,7 +46,7 @@ public class FilaDAO implements ICRUD<Fila> {
 	@Override
 	public long update(Fila obj) throws SQLException {
 
-		String sql = "update fila set" + "pk_paciente=?,status=?,"
+		String sql = "update fila set pk_paciente=?,status=?,"
 				+ "hora_saida=?, pk_medico=? where pk_fila = ?";
 
 		preparar = connection.prepareStatement(sql);
@@ -59,13 +58,8 @@ public class FilaDAO implements ICRUD<Fila> {
 		preparar.setLong(5, obj.getpkFila());
 
 		preparar.execute();
-		ResultSet rs = preparar.getGeneratedKeys();
 
-		if (rs.next()) {
-			return rs.getInt(1);
-		}
-
-		return -1;
+		return obj.getpkFila();
 	}
 
 	@Override
@@ -81,17 +75,15 @@ public class FilaDAO implements ICRUD<Fila> {
 		if (retriveOneByPkKey(pkKey) == null) {
 			return true;
 		}
-
 		return false;
-
 	}
 
 	@Override
 	public List<Fila> restriveAll() throws SQLException {
 
-		List<Fila> lFilas = new ArrayList<>();
+		List<Fila> filas = new ArrayList<>();
 		Fila fila;
-		String sql = "select * from fila order by pk_atendimento";
+		String sql = "select * from fila order by pk_fila";
 
 		preparar = connection.prepareStatement(sql);
 
@@ -99,11 +91,11 @@ public class FilaDAO implements ICRUD<Fila> {
 
 		while (rs.next()) {
 
-			lFilas.add(null);
+			filas.add(null);
 		}
 		preparar.close();
 
-		return lFilas;
+		return filas;
 	}
 
 	/**
@@ -117,12 +109,10 @@ public class FilaDAO implements ICRUD<Fila> {
 		Calendar calendar = Calendar.getInstance();
 		/*
 		 * select * from (select * from pacientes join fila using(pk_paciente))
-		 * pf where pk_paciente = 25 
-		 * select * from (select * from pacientes join
+		 * pf where pk_paciente = 25 select * from (select * from pacientes join
 		 * fila using(pk_paciente)) pf where pk_paciente = 25
 		 */
-		String sql = "select * from (select * from pacientes"
-				+ "join fila using(pk_paciente)) pf where pk_paciente=?";
+		String sql = "select * from (select * from pacientes join fila using(pk_paciente)) pf where pf.pk_paciente=?";
 
 		preparar = connection.prepareStatement(sql);
 		preparar.setLong(1, pkKLey);

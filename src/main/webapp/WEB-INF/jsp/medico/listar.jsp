@@ -17,6 +17,7 @@
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
+<<<<<<< HEAD
 	<h3>Lista Medicos</h3>
 	<a href="formulario">Novo Medico</a>
 	<c:forEach items="${medicoList}" var="medico">
@@ -28,6 +29,46 @@
 			<a href="${linkTo[MedicoController].deletar}?pkKey=${medico.pkMedico}">deletar</a>
 		</div>
 	</c:forEach>
+=======
+	<div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Lista de Médicos
+                     <div style="text-align: right;"> <a href="formulario"><button type="submit"  id="icnNovoPaciente" class="btn btn-default">Novo Médico</button></a></div>
+                </div>
+                    <div class="panel-body">
+                    <div>
+                      <table class="table table-hover">
+                            <thead>
+                            <td><strong>Nome</strong></td>
+                            <td><strong>CRM</strong></td>
+                            <td><strong>Telefone</strong></td>
+                            <td><strong>Disponibilidade</strong></td>
+                            <td><strong>Editar</strong></td>
+                            <td><strong>Excluir</strong></td>
+                            </thead>
+                            <!--Sql para buscar consultas na fila de antendimento no banco de dados-->
+                            <tbody> <c:forEach items="${medicoList}" var="medico">
+                                <tr>
+                                    <td>${medico.nomeMedico}</td>
+                                    <td>${medico.crm}</td>
+                                    <td>${medico.telMedico}</td>
+                                    <td>${medico.disponibilidade}</td>
+                                     <td>
+                                        <a href="${linkTo[MedicoController].editar}?pkKey=${medico.pkMedico}"><button type="submit" id="icnEditar" class="btn btn-default"><i class="glyphicon glyphicon-edit"></i></button></a>
+                                    </td>
+                                    <td>
+                                        <a href="${linkTo[MedicoController].deletar}?pkKey=${medico.pkMedico}"> <button type="submit" id="icnCancelar" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
+                                    </td>
+                                </tr>
+                               </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 89f0ef424a72a4ab8a905598caead897729c9eb0
 	<a href="<c:url value="/"/>">
 </body>
 </html>

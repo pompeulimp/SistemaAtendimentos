@@ -15,6 +15,7 @@
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
+<<<<<<< HEAD
 	<h3>Lista Tipo de Atendimento</h3>
 	<a href="formulario">Tipo de Atendimento</a>
 	<c:forEach items="${tipoList}" var="tipo">
@@ -25,5 +26,42 @@
 		</div>
 	</c:forEach>
 	<a href="<c:url value="/"/>">Voltar</a>
+=======
+	<div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Lista de Tipos de Atendimento
+                     <div style="text-align: right;"> <a href="formulario"><button type="submit"  id="icnNovoPaciente" class="btn btn-default">Novo Tipo de atendimento</button></a></div>
+                </div>
+                    <div class="panel-body">
+                    <div>
+                      <table class="table table-hover">
+                            <thead>
+                            <td><strong>Descrição</strong></td>
+                            <td><strong>Tempo Estimado</strong></td>
+                            <td><strong>Editar</strong></td>
+                            <td><strong>Excluir</strong></td>
+                            </thead>
+                            <!--Sql para buscar consultas na fila de antendimento no banco de dados-->
+                            <tbody> <c:forEach items="${tipoList}" var="tipo">
+                                <tr>
+                                    <td>${tipo.descricaoTipo}</td>
+                                    <td>${tipo.tempoEstimado}</td>
+                                     <td>
+                                        <a href="${linkTo[TipoController].editar}?pkKey=${tipo.pkTipoAtendimento}"><button type="submit" id="icnEditar" class="btn btn-default"><i class="glyphicon glyphicon-edit"></i></button></a>
+                                    </td>
+                                    <td>
+                                        <a  href="${linkTo[TipoController].deletar}?pkKey=${tipo.pkTipoAtendimento}"> <button type="submit" id="icnCancelar" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
+                                    </td>
+                                </tr>
+                               </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<a href="<c:url value="/"/>"></a>
+>>>>>>> 89f0ef424a72a4ab8a905598caead897729c9eb0
 </body>
 </html>

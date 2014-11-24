@@ -16,6 +16,7 @@
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
+<<<<<<< HEAD
 	<h3>Lista Unidades</h3>
 	<a href="formulario">Nova Unidade Hospitalar</a>
 	<c:forEach items="${hospitalList}" var="hospital">
@@ -28,6 +29,48 @@
 			<a href="${linkTo[HospitalController].deletar}?pkKey=${hospital.pkHospital}">deletar</a>
 		</div>
 	</c:forEach>
+=======
+	<div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Lista de Pacientes
+                     <div style="text-align: right;"> <a href="formulario"><button type="submit"  id="icnNovoPaciente" class="btn btn-default">Nova Unidade Hospitalar</button></a></div>
+                </div>
+                    <div class="panel-body">
+                    <div>
+                      <table class="table table-hover">
+                            <thead>
+                            <td><strong>Razão Social</strong></td>
+                            <td><strong>Nome Fantasia</strong></td>
+                            <td><strong>CNPJ</strong></td>
+                            <td><strong>Endereço</strong></td>
+                            <td><strong>Telefone</strong></td>
+                            <td><strong>Editar</strong></td>
+                            <td><strong>Excluir</strong></td>
+                            </thead>
+                            <!--Sql para buscar consultas na fila de antendimento no banco de dados-->
+                            <tbody> <c:forEach items="${hospitalList}" var="hospital">
+                                <tr>
+                                    <td>${hospital.razaosocial}</td>
+                                    <td>${hospital.nomeFantasia}</td>
+                                    <td>${hospital.cnpj}</td>
+                                    <td>${hospital.enderecoHospital}</td>
+                                    <td>${hospital.telefonehospital}</td>
+                                     <td>
+                                        <a href="${linkTo[HospitalController].editar}?pkKey=${hospital.pkHospital}"><button type="submit" id="icnEditar" class="btn btn-default"><i class="glyphicon glyphicon-edit"></i></button></a>
+                                    </td>
+                                    <td>
+                                        <a href="${linkTo[HospitalController].deletar}?pkKey=${hospital.pkHospital}"> <button type="submit" id="icnCancelar" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button></a>
+                                    </td>
+                                </tr>
+                               </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 89f0ef424a72a4ab8a905598caead897729c9eb0
 	<a href="<c:url value="/"/>">
 </body>
 </html>
