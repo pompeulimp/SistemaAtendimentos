@@ -16,17 +16,7 @@
 		${mensagem}
 		${especialidade.descricao}
 	</c:if>
-<<<<<<< HEAD
-	<h3>Lista Especialidades</h3>
-	<a href="formulario">Nova Especialidade</a>
-	<c:forEach items="${especialidadeList}" var="especialidade">
-		<div>${especialidade.descricao}			
-			<a href="${linkTo[EspecialidadeController].editar}?pkKey=${especialidade.pkEspecialidade}">Editar</a>		 
-			<a href="${linkTo[EspecialidadeController].deletar}?pkKey=${especialidade.pkEspecialidade}">deletar</a>
-		</div>
-	</c:forEach>
-	<a href="<c:url value="/"/>">Voltar</a>
-=======
+
 	<div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -60,6 +50,6 @@
             </div>
         </div>
 	<a href="<c:url value="/"/>"></a>
->>>>>>> 89f0ef424a72a4ab8a905598caead897729c9eb0
+
 </body>
 </html>

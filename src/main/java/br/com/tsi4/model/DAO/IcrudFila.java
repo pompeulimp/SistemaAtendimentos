@@ -34,12 +34,12 @@ public interface IcrudFila {
 	public boolean delete(long pkKey) throws SQLException;
 
 	/**
-	 * Rertorna
+	 * Recebe um medico e retorna a sua fila em um determidada data
 	 * 
-	 * @return arrayList<T>
+	 * @return ArrayLis<fila>
 	 * @throws SQLException
 	 */
-	public List<Fila> restriveAllByMedico(Medico medico) throws SQLException;
+	public List<Fila> restriveAllPerDay(Medico medico) throws SQLException;
 
 	/**
 	 * Recebe uma chave primaria e torna o Objeto daquele tipo

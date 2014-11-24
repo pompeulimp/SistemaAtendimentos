@@ -14,19 +14,6 @@
 	<c:if test="${not empty mensagem }">
 		${mensagem}
 	</c:if>
-<<<<<<< HEAD
-	<h3>Lista Pacientes</h3>
-	<a href="formulario">Novo Paciente</a>
-	<c:forEach items="${pacienteList}" var="paciente">
-		<div>${paciente.nomePaciente}
-			${paciente.cpfPaciente} ${paciente.enderecoPaciente}
-			${paciente.telefonePaciente}
-			<a href="${linkTo[PacienteController].editar}?pkKey=${paciente.pk_paciente}">Editar</a>		 
-			<a href="${linkTo[PacienteController].deletar}?pkKey=${paciente.pk_paciente}">deletar</a>
-		</div>
-	</c:forEach>
-	<a href="<c:url value="/"/>">Voltar</a>
-=======
 	
 	<div class="col-lg-12">
             <div class="panel panel-default">
@@ -66,6 +53,6 @@
                 </div>
             </div>
         </div>
->>>>>>> 89f0ef424a72a4ab8a905598caead897729c9eb0
+
 </body>
 </html>
