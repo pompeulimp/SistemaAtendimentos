@@ -6,6 +6,9 @@
 	
 <link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"
 	rel="stylesheet" type="text/css" />
+
+<link href="<c:url value="/bootstrap/font-awesome/css/font-awesome.css"/>"
+	rel="stylesheet" type="text/css" />
 	
 <link href="<c:url value="/bootstrap/css/bootstrap-theme.min.css"/>"
 	rel="stylesheet" type="text/css" />

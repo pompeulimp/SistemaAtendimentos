@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
 	<c:import url="../include/menu.jsp"></c:import>
 	<div class="container">
 		<div class="row" id="main-content">
@@ -39,5 +40,6 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>

@@ -21,7 +21,7 @@
 				<div class="span4" id="sidebar">
 					<form action="create">
 						<fieldset>
-							<legend></legend>
+							<legend>Cadastro de Tipos de Atendimento</legend>
 							<input type="hidden" name="tipo.pkTipoAtendimento"
 								value="${tipo.pkTipoAtendimento}"> <input
 								type="text" id="nome" name="tipo.descricaoTipo"
@@ -33,9 +33,9 @@
 								placeholder="Tempo Estimado" class="form-control" size="50"
 								onblur="validacao()"> <br> <input type="submit"
 								id="enviar" onclick=" return validaFormulario()"
-								class="btn btn-warning" value="Salvar">&nbsp;&nbsp;&nbsp;
-							<input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-							<a href="<c:url value="/"/>">Voltar</a>
+								class="btn btn-primary" value="Salvar">&nbsp;&nbsp;&nbsp;
+							<input type="reset" class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
+							<a href="<c:url value="/"/>"></a>
 						</fieldset>
 					</form>
 				</div>
