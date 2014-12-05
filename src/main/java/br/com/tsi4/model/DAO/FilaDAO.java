@@ -82,7 +82,7 @@ public class FilaDAO implements ICRUD<Fila> {
 	public List<Fila> restriveAll() throws SQLException {
 
 		List<Fila> filas = new ArrayList<>();
-		Fila fila;
+
 		String sql = "select * from fila order by pk_fila";
 
 		preparar = connection.prepareStatement(sql);
@@ -99,19 +99,14 @@ public class FilaDAO implements ICRUD<Fila> {
 	}
 
 	/**
-	 * esse metodo recebe uma chave primaria de um paciente e retorna uma sua a
-	 * fila que ele pertence
+	 * esse metodo recebe uma chave primaria de um paciente e retorna a fila que
+	 * ele pertence
 	 */
 	@Override
 	public Fila retriveOneByPkKey(long pkKLey) throws SQLException {
 
 		Fila fila = null;
 		Calendar calendar = Calendar.getInstance();
-		/*
-		 * select * from (select * from pacientes join fila using(pk_paciente))
-		 * pf where pk_paciente = 25 select * from (select * from pacientes join
-		 * fila using(pk_paciente)) pf where pk_paciente = 25
-		 */
 		String sql = "select * from (select * from pacientes join fila using(pk_paciente)) pf where pf.pk_paciente=?";
 
 		preparar = connection.prepareStatement(sql);

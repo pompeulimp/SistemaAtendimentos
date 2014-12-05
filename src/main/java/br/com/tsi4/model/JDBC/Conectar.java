@@ -16,7 +16,7 @@ public class Conectar {
 			con =  	DriverManager.getConnection(
 					"jdbc:postgresql://localhost:5432/agendamento",
 					"postgres",
-					"123");
+					"1234");
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
