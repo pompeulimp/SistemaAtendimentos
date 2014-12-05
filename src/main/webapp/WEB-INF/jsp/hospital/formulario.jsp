@@ -22,7 +22,7 @@
  <form action="create">
  <fieldset>
  <legend>Cadastro de Hospitais</legend>
-  <input type="text" name="hospital.pkFila" value="${hospital.pkFila}" id="Fila" placeholder="Fila" class="form-control" size="50" >
+ <input type="text" name="hospital.pkFila" value="${hospital.pkFila}" id="Fila" placeholder="Fila" class="form-control" size="50" >
  <input type="text" name="hospital.razaosocial" value="${hospital.razaosocial}" id="razaosocial" placeholder="Razão social" class="form-control" size="50" >
  <input type="text" name="hospital.nomeFantasia" value="${hospital.nomeFantasia}" id="nomefantasia" placeholder="Nome fantasia" class="form-control" size="50" >
  <input type="text" name="hospital.cnpj" value="${hospital.cnpj}" id="cnpj" placeholder="CNPJ" class="form-control" size="50">
