@@ -14,7 +14,7 @@
 <c:import url="../include/menu.jsp"></c:import>
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">Fila de atendimento</div>
+			<div class="panel-heading"><Legend>Fila de atendimento</Legend></div>
 			<div class="panel-body">
 				<div>
 					<table class="table table-hover">

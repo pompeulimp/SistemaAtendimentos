@@ -18,10 +18,10 @@
 <body>
 <div class="container" style="width:75%;">    
                 <div id="divLogin" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                    <div class="panel panel-info" >
+                    <div class="panel panel-default" >
                         <div class="panel-heading">
                             <div class="panel-title">Login</div>
-                            <div style="float:right; font-size: 80%; position: relative; top:-10px;"><a style="color: #c4e3f3;" href="#">Esqueceu sua senha?</a></div>
+                            <div style="float:right; font-size: 80%; position: relative; top:-10px;"><a style="color: #3372f3;" href="#">Esqueceu sua senha?</a></div>
                         </div>     
                         <div style="padding-top:30px" class="panel-body" >
                             <div style="display:none" id="alertaLogin" class="alert alert-danger col-sm-12"></div>
@@ -45,7 +45,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                        <input id="btnLogin" name="btnLogin" class="btn btn-success" type="submit" value="Login"/>
+                                        <input id="btnLogin" name="btnLogin" class="btn btn-info" type="submit" value="Login"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -64,9 +64,9 @@
                     </div>  
                 </div>
                 <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                    <div class="panel panel-info">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="panel-title">Sign Up</div>
+                            <div class="panel-title">Inscreva-se</div>
                             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide();
                                 $('#loginbox').show()">Sign In</a></div>
                         </div>  

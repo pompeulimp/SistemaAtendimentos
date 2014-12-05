@@ -18,15 +18,15 @@
 				<div class="span4" id="sidebar">
 	<form action="create" id="cadastroUsuario">
 		<fieldset>
-		<legend></legend>
+		<legend>Cadastro de Usuários</legend>
 		<input type="hidden"   name="usuario.pkUsuario" value="${usuario.pkUsuario}">
-		<input  type="text"	   name="usuario.nomeUsuario"  value="${usuario.nomeUsuario}" class="form-control" size="50" >
-		<input type="text"     name="usuario.nivelUsuario" value="${usuario.nivelUsuario}" class="form-control" size="50">
-		<input type="password" name="usuario.senha" value="" class="form-control" size="50">
+		<input  type="text"	   name="usuario.nomeUsuario"  value="${usuario.nomeUsuario}" class="form-control" size="50" placeholder="Nome">
+		<input type="text"     name="usuario.nivelUsuario" value="${usuario.nivelUsuario}" class="form-control" size="50" placeholder="Credencial">
+		<input type="password" name="usuario.senha" value="" class="form-control" size="50" placeholder="Senha">
 		<br>
-		<input type="submit" id="enviar" class="btn btn-warning" value="Salvar">&nbsp;&nbsp;&nbsp;
-		<input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-		<a href="<c:url value="/"/>">Voltar</a>
+		<input type="submit" id="enviar" class="btn btn-primary" value="Salvar">&nbsp;&nbsp;&nbsp;
+		<input type="reset" class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
+		<a href="<c:url value="/"/>"></a>
 		</fieldset>
 	</form>
 				</div>

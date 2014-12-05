@@ -21,7 +21,7 @@
  
  <form action="create">
  <fieldset>
- <legend></legend>
+ <legend>Cadastro de Hospitais</legend>
   <input type="text" name="hospital.pkFila" value="${hospital.pkFila}" id="Fila" placeholder="Fila" class="form-control" size="50" >
  <input type="text" name="hospital.razaosocial" value="${hospital.razaosocial}" id="razaosocial" placeholder="Razão social" class="form-control" size="50" >
  <input type="text" name="hospital.nomeFantasia" value="${hospital.nomeFantasia}" id="nomefantasia" placeholder="Nome fantasia" class="form-control" size="50" >
@@ -30,9 +30,9 @@
  <input type="text" name="hospital.telefonehospital" value="${hospital.telefonehospital}" id="telefone" placeholder="Telefone" class="form-control" size="50">
 
  <br>
- <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-warning" value="Salvar">&nbsp;&nbsp;&nbsp;
- <input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
- <a href="<c:url value="/"/>">Voltar</a>
+ <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-primary" value="Salvar">&nbsp;&nbsp;&nbsp;
+ <input type="reset" class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
+ <a href="<c:url value="/"/>"></a>
 </fieldset>
  </form>
  </div>

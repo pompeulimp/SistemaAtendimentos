@@ -17,18 +17,20 @@
 <div>
 	<c:import url="../include/menu.jsp"></c:import>
 </div>
+
 <div class="container">
 <div class="row" id="main-content">
 <div class="well" align="center">
 <div class="span4" id="sidebar">
 	<form action="create">
+	
 	<fieldset>
- 	<legend></legend>
+ 	<legend>Cadastro de Especialidades</legend>
 		<input type="hidden" name ="especialidade.pkEspecialidade" value="${especialidade.pkEspecialidade}" >
-		<input type="text" name ="especialidade.descricao" value="${especialidade.descricao}" class="form-control" size="50" placeholder="especialidade">
-		<input type="submit" id="enviar"  class="btn btn-warning" value="Gravar">
-		<input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-		<a href="<c:url value="/"/>">Voltar</a>
+		<input type="text" name ="especialidade.descricao" value="${especialidade.descricao}" class="form-control" size="50" placeholder="Especialidade">
+		<input type="submit" id="enviar"  class="btn btn-primary" value="Gravar">
+		<input type="reset" class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
+		<a href="<c:url value="/"/>"></a>
 	</fieldset>	
 	</form>
  </div>

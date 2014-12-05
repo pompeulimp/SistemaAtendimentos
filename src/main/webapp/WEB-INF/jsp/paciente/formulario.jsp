@@ -22,7 +22,7 @@
 				<div class="span4" id="sidebar">
 					<form action="create" id="cadastroPaciente">
 						<fieldset>
-							<legend></legend>
+							<legend>Cadastro de Pacientes</legend>
 							<input type="hidden" name="paciente.pk_paciente" value="${paciente.pk_paciente}">
 							<input type="text" id="nome" name="paciente.nomePaciente" value="${paciente.nomePaciente}"  placeholder="Nome Completo"
 								class="form-control" size="50" onblur="validacao('nome',false)">
@@ -34,10 +34,10 @@
 								id="telefone" name="paciente.telefonePaciente" value="${paciente.telefonePaciente}" placeholder="Telefone" class="form-control"
 								size="50" onblur="validacao('telefone',false)"> <br>
 							<input type="submit" id="enviar"
-								onclick=" return validaFormulario()" class="btn btn-warning"
+								onclick=" return validaFormulario()" class="btn btn-primary"
 								value="Salvar">&nbsp;&nbsp;&nbsp; <input type="reset"
-								class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
-							<a href="<c:url value="/"/>">Voltar</a>
+								class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
+							<a href="<c:url value="/"/>"></a>
 						</fieldset>
 					</form>
 				</div>
