@@ -19,7 +19,7 @@
 	<div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Lista de Pacientes
+                    <Legend>Lista de Pacientes</Legend>
                      <div style="text-align: right;"> <a href="formulario"><button type="submit"  id="icnNovoPaciente" class="btn btn-default">Nova Unidade Hospitalar</button></a></div>
                 </div>
                     <div class="panel-body">

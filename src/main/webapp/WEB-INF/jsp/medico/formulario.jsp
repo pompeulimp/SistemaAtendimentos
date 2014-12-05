@@ -23,10 +23,10 @@
  
  <form action="create" id="cadastroMedico">
  <fieldset>
- <legend></legend>
+ <legend>Cadastro de Médicos</legend>
  <input type="hidden" name="medico.pkMedico" value="${medico.pkMedico}"/>
  <input type="text" name="medico.nomeMedico" value="${medico.nomeMedico}" id="nome" placeholder="Nome Completo" class="form-control" size="50">
- <input type="text" name="medico.crm" value="${medico.crm}" placeholder="crm" id="crm" placeholder="CRM" class="form-control" size="50">
+ <input type="text" name="medico.crm" value="${medico.crm}" id="crm" placeholder="CRM" class="form-control" size="50">
  <!--<input type="text" id="cpf" placeholder="CPF/CNPJ" class="form-control" size="50">
   <input type="text" id="nacimento" placeholder="Data nacimento" class="form-control" size="50">
  <input type="text" id="endereco" placeholder="Endereço" class="form-control" size="50">
@@ -41,9 +41,9 @@
  <input type="password" id="password" placeholder="Senha" class="form-control" size="50" >-->
 
  <br>
- <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-warning" value="Salvar">&nbsp;&nbsp;&nbsp;
- <input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
- <a href="<c:url value="/"/>">Voltar</a>
+ <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-primary" value="Salvar">&nbsp;&nbsp;&nbsp;
+ <input type="reset" class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
+ <a href="<c:url value="/"/>"></a>
 </fieldset>
  </form>
  </div>

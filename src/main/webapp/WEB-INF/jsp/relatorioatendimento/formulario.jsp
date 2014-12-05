@@ -23,13 +23,13 @@
  
  <form >
  <fieldset>
- <legend></legend>
+ <legend>Relatórios</legend>
 
  <input type="text" id="cpf" placeholder="CPF/CNPJ" class="form-control" size="50">
   <input type="text" id="nacimento" placeholder="Data nacimento" class="form-control" size="50">
    
- <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-warning" value="Consultar">&nbsp;&nbsp;&nbsp;
- <input type="reset" class="btn btn-warning" value="Limpar">&nbsp;&nbsp;&nbsp;
+ <input type="submit" id="enviar" onclick=" return validaFormulario()" class="btn btn-primary" value="Consultar">&nbsp;&nbsp;&nbsp;
+ <input type="reset" class="btn btn-default" value="Limpar">&nbsp;&nbsp;&nbsp;
 
 </fieldset>
  </form>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<body  onload="startTime()">
+	<header style="background-color: #fff;"></header>
   <div class="bs-example">
             <nav id="myNavbar" class="navbar navbar-default" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -12,7 +14,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">SAA - Sistema de Agendamento de Atendimentos</a>
+                        <a class="navbar-brand">SAA</a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -25,8 +27,8 @@
                                     <li><a href="<c:url value="/paciente/formulario"/>"><i class="fa fa-user"></i>&nbsp;Paciente</a></li>
                                     <li><a href="<c:url value="/medico/formulario"/>"><i class="fa fa-user-md"></i>&nbsp;Médico</a></li>
                                     <li><a href="<c:url value="/hospital/formulario"/>"><i class="fa fa-plus"></i>&nbsp;Hospital</a></li>
-                                    <li><a href="<c:url value="/especialidade/formulario"/>"><i class="fa fa-plus"></i>&nbsp;Especialidade</a></li>
-                                    <li><a href="<c:url value="/tipo/formulario"/>"><i class="fa fa-plus"></i>&nbsp;Tipo de Atendimento</a></li>
+                                    <li><a href="<c:url value="/especialidade/formulario"/>"><i class="fa fa-sitemap"></i>&nbsp;Especialidade</a></li>
+                                    <li><a href="<c:url value="/tipo/formulario"/>"><i class="fa fa-list"></i>&nbsp;Tipo de Atendimento</a></li>
                                 </ul>
                             </li>
                             <li><a href=""><i class="fa fa-medkit"></i>&nbsp;Marcar Consulta</a></li>
@@ -38,8 +40,8 @@
                                     <li><a href="<c:url value="/paciente/listar"/>"><i class="fa fa-user"></i>&nbsp;Paciente</a></li>
                                     <li><a href="<c:url value="/medico/listar"/>"><i class="fa fa-user-md"></i>&nbsp;Médico</a></li>
                                     <li><a href="<c:url value="/hospital/listar"/>"><i class="fa fa-plus"></i>&nbsp;Hospital</a></li>
-                                    <li><a href="<c:url value="/especialidade/listar"/>"><i class="fa fa-plus"></i>&nbsp;Especialidade</a></li>
-                                    <li><a href="<c:url value="/tipo/listar"/>"><i class="fa fa-plus"></i>&nbsp;Tipo de Atendiemnto</a></li>
+                                    <li><a href="<c:url value="/especialidade/listar"/>"><i class="fa fa-sitemap"></i>&nbsp;Especialidade</a></li>
+                                    <li><a href="<c:url value="/tipo/listar"/>"><i class="fa fa-list"></i>&nbsp;Tipo de Atendiemnto</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -52,9 +54,10 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Ajuda&nbsp;<i class="fa fa-question"></i></a></li>
                             <li><a href=<c:url value='/login/logout'/>>Deslogar&nbsp;<i class="fa fa-sign-out"></i></a></li>
-                            <li><p id="txt"></p></li> 
+                            <li><p id="txt" ></p></li> 
                         </ul>
                     </div>
                 </div>
             </nav>
 </div>
+</body>
