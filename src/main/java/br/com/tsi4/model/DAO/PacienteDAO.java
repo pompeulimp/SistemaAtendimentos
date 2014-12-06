@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import testBlackBox.IPacienteDAO;
 import br.com.tsi4.model.Paciente;
 import br.com.tsi4.model.JDBC.Conectar;
 
-public class PacienteDAO implements ICRUD<Paciente> {
+public class PacienteDAO implements ICRUD<Paciente>, IPacienteDAO {
 
 	private Connection connection;
 	private PreparedStatement preparar;
@@ -25,8 +27,7 @@ public class PacienteDAO implements ICRUD<Paciente> {
 				+ "values (? , ? , ? , ?)";
 
 		preparar = connection.prepareStatement(sql);
-		
-		
+
 		preparar.setString(1, obj.getNomePaciente());
 		preparar.setString(2, obj.getCpfPaciente());
 		preparar.setString(3, obj.getEnderecoPaciente());
@@ -56,11 +57,9 @@ public class PacienteDAO implements ICRUD<Paciente> {
 		preparar.setLong(5, obj.getPk_paciente());
 
 		preparar.execute();
-		
+
 		preparar.close();
-		
-		
-		
+
 		return obj.getPk_paciente();
 	}
 
@@ -157,6 +156,28 @@ public class PacienteDAO implements ICRUD<Paciente> {
 		preparar.close();
 
 		return lPacientes;
+	}
+
+	@Override
+	public Paciente retriveByCPF(String cpf) throws SQLException {
+
+		Paciente paciente;
+
+		String sql = "select * from pacientes where cpfpaciente =?";
+
+		preparar = connection.prepareStatement(sql);
+		preparar.setString(1, cpf);
+
+		ResultSet rs = preparar.executeQuery();
+
+		rs.next();
+		paciente = new Paciente(rs.getLong("pk_paciente"),
+				rs.getString("nomepaciente"), rs.getString("cpfpaciente"),
+				rs.getString("endpaciente"), rs.getString("telpaciente"));
+
+		preparar.close();
+
+		return paciente;
 	}
 
 }

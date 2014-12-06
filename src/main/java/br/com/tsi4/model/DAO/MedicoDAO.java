@@ -7,10 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import testBlackBox.IMedicoDAO;
 import br.com.tsi4.model.Medico;
 import br.com.tsi4.model.JDBC.Conectar;
 
-public class MedicoDAO implements ICRUD<Medico> {
+public class MedicoDAO implements ICRUD<Medico>, IMedicoDAO {
 
 	private Connection connection;
 	private PreparedStatement preparar;
@@ -32,10 +33,10 @@ public class MedicoDAO implements ICRUD<Medico> {
 		preparar.setString(4, obj.getDisponibilidade());
 
 		preparar.execute();
-		
+
 		ResultSet rs = preparar.getGeneratedKeys();
 		preparar.close();
-		
+
 		if (rs.next()) {
 			return rs.getInt(1);
 		}
@@ -45,7 +46,7 @@ public class MedicoDAO implements ICRUD<Medico> {
 
 	@Override
 	public long update(Medico obj) throws SQLException {
-		String sql = "update medicos set crm =?, nomemedico=? ,telmedico=?, disponibilidade=? " 
+		String sql = "update medicos set crm =?, nomemedico=? ,telmedico=?, disponibilidade=? "
 				+ "where  pk_medico=?";
 
 		preparar = connection.prepareStatement(sql);
@@ -56,7 +57,7 @@ public class MedicoDAO implements ICRUD<Medico> {
 		preparar.setString(4, obj.getDisponibilidade());
 		preparar.setLong(5, obj.getPkMedico());
 		preparar.execute();
-		
+
 		ResultSet rs = preparar.getGeneratedKeys();
 
 		if (rs.next()) {
@@ -156,6 +157,28 @@ public class MedicoDAO implements ICRUD<Medico> {
 		preparar.close();
 
 		return lMedicos;
+	}
+
+	@Override
+	public Medico retriveByCRM(String crm) throws SQLException {
+		Medico medico = null;
+		String sql = "select * from medicos where crm = ?";
+
+		preparar = connection.prepareStatement(sql);
+		preparar.setString(1, crm);
+
+		ResultSet rs = preparar.executeQuery();
+
+		rs.next();
+		medico = new Medico();
+		medico.setPkMedico(rs.getInt("pk_medico"));
+		medico.setCrm(rs.getString("crm"));
+		medico.setNomeMedico(rs.getString("nomemedico"));
+		medico.setTelMedico(rs.getString("telmedico"));
+		medico.setDisponibilidade(rs.getString("disponibilidade"));
+
+		preparar.close();
+		return medico;
 	}
 
 }

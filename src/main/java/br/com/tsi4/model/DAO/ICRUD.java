@@ -3,6 +3,8 @@ package br.com.tsi4.model.DAO;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.tsi4.model.Paciente;
+
 public interface ICRUD<T> {
 	/**
 	 * recebe um objeto de um tipo qualquer e grava esse tipo no banco;
@@ -48,4 +50,5 @@ public interface ICRUD<T> {
 	 * @throws SQLException 
 	 */
 	public List<T> retriveByName(String  nome) throws SQLException;
+	
 }

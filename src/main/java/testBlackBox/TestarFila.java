@@ -1,6 +1,6 @@
 package testBlackBox;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -37,48 +37,30 @@ public class TestarFila {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
 	public void testeEntradaNaFilaAtendimentos() throws SQLException {
-		/* 
+
 		ICRUD<Paciente> icrudPanciente = new PacienteDAO();
 		List<Paciente> pacientes = icrudPanciente.retriveByName("Jose");
-		 for (Paciente p : pacientes) {
-		 System.out.println(p.toString());
-		 }
-		 ICRUD<Medico> icrudMedico = new MedicoDAO();
-		 List<Medico> medicosbyName = icrudMedico.retriveByName("Jacinto");
-		 for (Medico m : medicosbyName) {
-		 System.out.println(m.toString());
-		 }
-		
-		 Fila fila = new Fila(pacientes.get(0).getPk_paciente(), medicosbyName
-		 .get(0).getPkMedico());
-		
-		 ICRUD<Fila> icrudFila = new FilaDAO();
-		 
-		 long create = icrudFila.create(fila);
-		 assertTrue(create != 0);
-		*/
-
-	}
-
-	@Test
-	public void testeAtulizarFilaAtendimentos() throws SQLException {
-
-		/*ICRUD<Paciente> icrudPaciente = new PacienteDAO();
-		List<Paciente> pacientes = icrudPaciente.retriveByName("Pompeu");
 		for (Paciente p : pacientes) {
 			System.out.println(p.toString());
 		}
+		ICRUD<Medico> icrudMedico = new MedicoDAO();
+		List<Medico> medicosbyName = icrudMedico.retriveByName("Jacinto");
+		for (Medico m : medicosbyName) {
+			System.out.println(m.toString());
+		}
 
-		long pkKLey = pacientes.get(0).getPk_paciente();
+		Fila fila = new Fila(pacientes.get(0).getPk_paciente(), medicosbyName
+				.get(0).getPkMedico());
+
 		ICRUD<Fila> icrudFila = new FilaDAO();
-		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
-		assertTrue(fila != null);*/
+
+		long create = icrudFila.create(fila);
+		assertTrue(create != 0);
+
 	}
 
-	@Test
-	public void testeUpdateStatusFila() throws SQLException {
+	public void testeAtulizarFilaAtendimentos() throws SQLException {
 
 		ICRUD<Paciente> icrudPaciente = new PacienteDAO();
 		List<Paciente> pacientes = icrudPaciente.retriveByName("Pompeu");
@@ -88,7 +70,41 @@ public class TestarFila {
 
 		long pkKLey = pacientes.get(0).getPk_paciente();
 		ICRUD<Fila> icrudFila = new FilaDAO();
-		// pegando paciente em uma fila
+		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
+		assertTrue(fila != null);
+	}
+
+	public void deletarPacienteDaFila() throws SQLException {
+
+		ICRUD<Paciente> icrudPaciente = new PacienteDAO();
+		List<Paciente> pacientes = icrudPaciente.retriveByName("Jose");
+		for (Paciente p : pacientes) {
+			System.out.println(p.toString());
+		}
+		long pkKLey = pacientes.get(0).getPk_paciente();
+		ICRUD<Fila> icrudFila = new FilaDAO(); // pegando paciente em uma fila
+												// Fila fila =
+		
+
+		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
+		assertTrue(icrudFila.delete(fila.getpkFila()));
+
+	}
+
+	@Test
+	public void testeUpdateStatusFila() throws SQLException {
+
+		IPacienteDAO daoPaciente = new PacienteDAO();
+		Paciente paciente = daoPaciente.retriveByCPF("00311920179");
+		assertEquals(paciente.getCpfPaciente(), "00311920179");
+
+		IMedicoDAO daoMedico = new MedicoDAO();
+		Medico medico = daoMedico.retriveByCRM("0031231569");
+		assertEquals(medico.getCrm(), "0031231569");
+
+		long pkKLey = paciente.getPk_paciente();
+		ICRUD<Fila> icrudFila = new FilaDAO();
+
 		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
 		fila.setStatus(false);
 
@@ -97,20 +113,4 @@ public class TestarFila {
 		assertTrue(fk_fila > 0);
 	}
 
-	@Test
-	public void deletarPacienteFila() throws SQLException {
-
-		/*ICRUD<Paciente> icrudPaciente = new PacienteDAO();
-		List<Paciente> pacientes = icrudPaciente.retriveByName("Jose");
-		for (Paciente p : pacientes) {
-			System.out.println(p.toString());
-		}
-		long pkKLey = pacientes.get(0).getPk_paciente();
-		ICRUD<Fila> icrudFila = new FilaDAO();
-		// pegando paciente em uma fila
-		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
-
-		assertTrue(icrudFila.delete(fila.getpkFila()));
-*/
-	}
 }

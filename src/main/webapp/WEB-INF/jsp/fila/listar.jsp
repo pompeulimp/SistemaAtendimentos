@@ -11,18 +11,19 @@
 <c:import url="../include/css.jsp"></c:import>
 </head>
 <body>
-<c:import url="../include/menu.jsp"></c:import>
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="panel-heading"><Legend>Fila de atendimento</Legend></div>
+			<div class="panel-heading">
+				<Legend>Fila de atendimento</Legend>
+			</div>
 			<div class="panel-body">
 				<div>
 					<table class="table table-hover">
 						<thead>
 							<td><strong>Ordem</strong></td>
 							<td><strong>Horário</strong></td>
-							<td><strong>Nome do Paciente</strong></td>
-							<td><strong>Nome do Médico<br>responsável pela
+							<td><strong>Paciente </strong></td>
+							<td><strong>Medico </strong><br>responsável pela
 									consulta
 							</strong></td>
 							<td><strong>Cancelar<br>consulta
@@ -33,8 +34,8 @@
 							<tr>
 								<td>1º</td>
 								<td>15:30</td>
-								<td>John Doe</td>
-								<td>Dr. Jane Roe</td>
+								<td>${paciente.nomePaciente}</td>
+								<td>${medico.nomeMedico}</td>
 								<td>
 									<button type="submit" id="icnCancelar" class="btn btn-danger">
 										<i class="glyphicon glyphicon-remove"></i>
@@ -47,6 +48,5 @@
 			</div>
 		</div>
 	</div>
-	<div></div>
 </body>
 </html>

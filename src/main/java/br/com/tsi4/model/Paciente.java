@@ -10,6 +10,15 @@ public class Paciente {
 	public Paciente() {
 
 	}
+	
+	public Paciente(long pk_paciente, String nomePaciente, String cpfPaciente,
+			String enderecoPaciente, String telefonePaciente) {
+		this.pk_paciente = pk_paciente;
+		this.nomePaciente = nomePaciente;
+		this.cpfPaciente = cpfPaciente;
+		this.enderecoPaciente = enderecoPaciente;
+		this.telefonePaciente = telefonePaciente;
+	}
 
 	public long getPk_paciente() {
 		return pk_paciente;
