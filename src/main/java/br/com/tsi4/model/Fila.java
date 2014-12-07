@@ -38,12 +38,12 @@ public class Fila {
 	 * @param pkMedico
 	 * @param horaEntrada
 	 */
-	public Fila(long pkFila, long pkPaciente, long pkMedico,
+	public Fila(long pkFila, long pkPaciente, long pkMedico,boolean status,
 			Calendar horaEntrada, Calendar horaSaida) {
 		this.pkFila = pkFila;
 		this.pkPaciente = pkPaciente;
 		this.pkMedico = pkMedico;
-		this.setStatus(false);
+		this.status = status;
 		this.horaEntrada = horaEntrada;
 		this.horaSaida = horaSaida;
 	}

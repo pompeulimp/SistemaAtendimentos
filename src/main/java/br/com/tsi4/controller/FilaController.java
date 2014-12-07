@@ -1,8 +1,10 @@
 package br.com.tsi4.controller;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
 import testBlackBox.IMedicoDAO;
@@ -19,17 +21,19 @@ import br.com.tsi4.model.DAO.FilaDAO;
 import br.com.tsi4.model.DAO.ICRUD;
 
 @Controller
-public class FilaController {
+@SessionScoped
+public class FilaController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Result result;
 	private final ICRUD<Fila> icrud;
 	private String mensagen = null;
 	private final IPacienteDAO pacienteDAO;
 	private final IMedicoDAO medicoDAO;
 	private Fila fila;
-	private Medico medico;
-	private Paciente paciente;
 	private final Validator validator;
+	private Medico retriveByCRM;
+	private Paciente retriveByCPF;
 
 	@Inject
 	public FilaController(Result result, Validator validator, FilaDAO fDao,
@@ -39,7 +43,6 @@ public class FilaController {
 		this.validator = validator;
 		this.pacienteDAO = pacienteDAO;
 		this.medicoDAO = medicoDAO;
-
 	}
 
 	@Deprecated
@@ -51,12 +54,17 @@ public class FilaController {
 	}
 
 	public void pacienteForm() {
+
 	}
 
 	public void addFila() {
+		result.include(retriveByCRM);
+		result.include(retriveByCPF);
 	}
 
 	public void medicoForm() {
+		result.include(retriveByCRM);
+		result.include(retriveByCPF);
 	}
 
 	public void create(Fila fila) {
@@ -88,13 +96,14 @@ public class FilaController {
 		return null;
 	}
 
-	public void editar(long pkKey) {
+	public void editar(Fila fila) {
 		try {
-			fila = icrud.retriveOneByPkKey(pkKey);
+			fila = icrud.retriveOneByPkKey(fila.getPkFila());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		result.include(fila);
+
 	}
 
 	public void deletar(long pkKey) {
@@ -113,14 +122,15 @@ public class FilaController {
 
 	@Post("/paciente/cpf")
 	public void buscarPacienteByCPF(String cpf) {
-		if (cpf.matches("^\\d{11}$")) {
 
+		if (cpf.matches("^\\d{11}$")) {
 			try {
-				paciente = pacienteDAO.retriveByCPF(cpf);
+				retriveByCPF = pacienteDAO.retriveByCPF(cpf);
 			} catch (SQLException e) {
 				erroCPF("CPF INEXISTENTE");
 			}
-			result.include(paciente);
+
+			result.include(retriveByCPF);
 			result.redirectTo(this).pacienteForm();
 		} else {
 			erroCPF("CPF INVALIDO");
@@ -130,12 +140,15 @@ public class FilaController {
 	@Post("/medico/crm")
 	public void buscarMedicoByCRM(String crm) {
 		if (crm.matches("^\\d{4,10}$")) {
+
 			try {
-				medico = medicoDAO.retriveByCRM(crm);
+				retriveByCRM = medicoDAO.retriveByCRM(crm);
 			} catch (SQLException e) {
 				erroCRM("CRM INEXISTENTE");
 			}
-			result.include(medico);
+
+			result.include(retriveByCRM);
+			result.include(retriveByCPF);
 			result.redirectTo(this).medicoForm();
 
 		} else {
@@ -143,14 +156,17 @@ public class FilaController {
 		}
 	}
 
-	@Post("/fila/addPacienteFila")
+	@Post("/addPacienteFila")
 	public void addPacienteFila(long pkPaciente, long pkMedico) {
+		System.out.println(pkPaciente + " " + pkMedico);
+		fila = new Fila(pkPaciente, pkMedico);
 		try {
-			icrud.create(new Fila(pkPaciente, pkMedico));
+			icrud.create(fila);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		result.include(fila);
+		result.redirectTo(this).listar();
 	}
 
 	private void erroCPF(String msg) {

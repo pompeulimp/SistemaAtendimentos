@@ -8,9 +8,11 @@
 		<label>Buscar Pacimente por CPF</label> <input type="text" name="cpf"
 			value="${cpf}" id="cpf" placeholder="CPF Paciente"
 			class="form-control" size="30"> <input type="submit"
-			value="ok" class="btn">
-		<div class="resultP"></div>
+			value="ok" class="btn btn-primary">
+
 	</form>
+	
+	<div class="resultP"></div>
 
 	<script>
 		$("#pacienteCPF").submit(
@@ -30,3 +32,4 @@
 				});
 	</script>
 </fieldset>
+

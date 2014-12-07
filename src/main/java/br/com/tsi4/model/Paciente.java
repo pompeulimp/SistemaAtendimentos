@@ -1,8 +1,15 @@
 package br.com.tsi4.model;
 
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 
-public class Paciente {
+
+public class Paciente implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private long pk_paciente;
 	private String nomePaciente;
 	private String cpfPaciente;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +12,7 @@
 <c:import url="../include/css.jsp"></c:import>
 </head>
 <body>
+<c:import url="../include/menu.jsp"></c:import>
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -21,26 +23,38 @@
 					<table class="table table-hover">
 						<thead>
 							<td><strong>Ordem</strong></td>
-							<td><strong>Horário</strong></td>
+							<td><strong>Medico</strong></td>
 							<td><strong>Paciente </strong></td>
-							<td><strong>Medico </strong><br>responsável pela
-									consulta
-							</strong></td>
-							<td><strong>Cancelar<br>consulta
-							</strong></td>
+							<td><strong>Status </strong><br>
+							<td><strong>Entrada </strong><br>
+							<td><strong>Saida </strong><br>
 						</thead>
 						<!--Sql para buscar consultas na fila de antendimento no banco de dados-->
 						<tbody>
 							<tr>
-								<td>${paciente.pkPaciente}</td>
-								<td>${paciente.nomePaciente}</td>
-								<td>${medico.pkMedico}</td>
-								<td>${medico.nomeMedico}</td>
-								<td>
-									<button type="submit" id="icnCancelar" class="btn btn-danger">
-										<i class="glyphicon glyphicon-remove"></i>
-									</button>
-								</td>
+								<c:forEach items="${filaList}" var="fila">
+									<tr>
+										<td>${fila.pkFila}</td>
+										<td>${fila.pkPaciente}</td>
+										<td>${fila.pkMedico}</td>
+										<td>${fila.status}</td>
+										<td><fmt:formatDate type="both" 
+            							value="${fila.horaEntrada.time}" /></td>
+            							<td><fmt:formatDate type="both" 
+            							value="${fila.horaSaida.time}" /></td>
+										<td><a href="${linkTo[FilaController].editar}?pkKey=${especialidade.pkEspecialidade}"><button
+													type="submit" id="icnEditar" class="btn btn-default">
+													<i class="glyphicon glyphicon-edit"></i>
+												</button></a></td>
+										<td><a
+											href="${linkTo[FilaController].deletar}?pkKey=${especialidade.pkEspecialidade}">
+												<button type="submit" id="icnCancelar"
+													class="btn btn-danger">
+													<i class="glyphicon glyphicon-remove"></i>
+												</button>
+										</a></td>
+									</tr>
+								</c:forEach>
 							</tr>
 						</tbody>
 					</table>

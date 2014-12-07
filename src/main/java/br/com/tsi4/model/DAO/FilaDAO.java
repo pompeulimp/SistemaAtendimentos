@@ -26,7 +26,7 @@ public class FilaDAO implements ICRUD<Fila> {
 	}
 
 	@Deprecated
-	 public FilaDAO() {
+	public FilaDAO() {
 		this(null);
 	}
 
@@ -96,10 +96,14 @@ public class FilaDAO implements ICRUD<Fila> {
 		preparar = connection.prepareStatement(sql);
 
 		ResultSet rs = preparar.executeQuery();
-
+		Calendar entrada = Calendar.getInstance();
+		Calendar saida = Calendar.getInstance();
 		while (rs.next()) {
-
-			filas.add(null);
+			entrada.setTimeInMillis(rs.getTimestamp("hora_entrada").getTime());
+			//saida.setTimeInMillis(rs.getTimestamp("hora_saida").getTime());
+			filas.add(new Fila(rs.getLong("pk_fila"),
+					rs.getLong("pk_paciente"), rs.getLong("pk_medico"),rs.getBoolean("status"),
+					entrada, saida));
 		}
 		preparar.close();
 
@@ -126,7 +130,7 @@ public class FilaDAO implements ICRUD<Fila> {
 			entrada.setTimeInMillis(rs.getTimestamp("hora_entrada").getTime());
 
 			fila = new Fila(rs.getLong("pk_fila"), rs.getLong("pk_paciente"),
-					rs.getLong("pk_medico"), entrada, saida);
+					rs.getLong("pk_medico"),rs.getBoolean("status"), entrada, saida);
 		}
 		preparar.close();
 

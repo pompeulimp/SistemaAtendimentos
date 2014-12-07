@@ -1,9 +1,14 @@
 package br.com.tsi4.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Medico {
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
+public class Medico implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private int pkMedico;
 	private String crm;
 	private String nomeMedico;

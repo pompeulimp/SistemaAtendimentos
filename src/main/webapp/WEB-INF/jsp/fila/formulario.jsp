@@ -14,13 +14,8 @@
 <body>
 	
 	<c:import url="../include/menu.jsp"></c:import>
-	
 	<div>
 		<c:import url="../fila/pacienteSearch.jsp"></c:import>
-	</div>
-	
-	<div>
-		<c:import url="../fila/medicoSearch.jsp"></c:import>
 	</div>
 </body>
 </html>

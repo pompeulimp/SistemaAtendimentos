@@ -8,9 +8,10 @@
 		<label>Buscar Medico por CRM</label> <input type="text" name="crm"
 			value="${crm}" id="busca" placeholder="CRM Medico"
 			class="form-control" size="30"> <input type="submit"
-			value="ok" class="btn">
-		<div class="resultM"></div>
+			value="ok" class="btn btn-primary">
 	</form>
+
+	<div class="resultM"></div>
 
 	<script>
 		$("#medicocrm").submit(

@@ -31,8 +31,8 @@
                                     <li><a href="<c:url value="/tipo/formulario"/>"><i class="fa fa-list"></i>&nbsp;Tipo de Atendimento</a></li>
                                 </ul>
                             </li>
-                            <li><a href=""><i class="fa fa-medkit"></i>&nbsp;Marcar Consulta</a></li>
-                            <li><a href="<c:url value="/fila/formulario"/>"><i class="fa fa-list-ol"></i>&nbsp;Fila</a></li>
+                            <li><a href="<c:url value="/fila/formulario"/>"><i class="fa fa-medkit"></i>&nbsp;Marcar Consulta</a></li>
+                            <li><a href="<c:url value="/fila/listar"/>"><i class="fa fa-list-ol"></i>&nbsp;Fila</a></li>
                             <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-list-ul"></i>&nbsp;Visualizar Cadastros <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
