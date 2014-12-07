@@ -5,13 +5,13 @@
 <fieldset>
 	<form id="pacienteCPF" action="<c:url value="/paciente/cpf"/>"
 		method="post" class="navbar-form navbar-left" role="search">
-		<label>Buscar Pacimente por CPF</label> <input
-			type="text" name="cpf" value="${cpf}" id="cpf"
-			placeholder="CPF Paciente" class="form-control" size="30"> <input
-			type="submit" value="ok" class="btn">
-			<div class="resultP"></div>
+		<label>Buscar Pacimente por CPF</label> <input type="text" name="cpf"
+			value="${cpf}" id="cpf" placeholder="CPF Paciente"
+			class="form-control" size="30"> <input type="submit"
+			value="ok" class="btn">
+		<div class="resultP"></div>
 	</form>
-	
+
 	<script>
 		$("#pacienteCPF").submit(
 				function(event) {
@@ -23,12 +23,10 @@
 					var posting = $.post(url, {
 						cpf : term
 					});
-					
+
 					posting.done(function(data) {
 						$(".resultP").html(data);
 					});
 				});
 	</script>
-
-
 </fieldset>

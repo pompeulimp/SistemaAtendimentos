@@ -6,16 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import br.com.tsi4.model.Tipo;
-import br.com.tsi4.model.JDBC.Conectar;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
+import br.com.tsi4.model.Tipo;
+
+@RequestScoped
 public class TipoDAO implements ICRUD<Tipo> {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
+	@Inject
+	public TipoDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+	@Deprecated
 	public TipoDAO() {
-		connection = Conectar.getConnection();
+		this(null);
 	}
 
 	@Override
@@ -74,7 +84,7 @@ public class TipoDAO implements ICRUD<Tipo> {
 	public List<Tipo> restriveAll() throws SQLException {
 
 		List<Tipo> tipoatendimentos = new ArrayList<>();
-		
+
 		Tipo tipo;
 
 		String sql = "select * from tipoatendimento";
@@ -97,7 +107,7 @@ public class TipoDAO implements ICRUD<Tipo> {
 
 	@Override
 	public Tipo retriveOneByPkKey(long pkKLey) throws SQLException {
-		Tipo tipo= null;
+		Tipo tipo = null;
 
 		String sql = "select * from tipoatendimento where pk_tipo=?";
 
@@ -106,7 +116,7 @@ public class TipoDAO implements ICRUD<Tipo> {
 		ResultSet rs = preparar.executeQuery();
 
 		while (rs.next()) {
-			tipo= new Tipo();
+			tipo = new Tipo();
 			tipo.setPkTipoAtendimento(rs.getLong("pk_tipo"));
 			tipo.setDescricaoTipo(rs.getString("descricaotipo"));
 			tipo.setTempoEstimado(rs.getDouble("tempoEstimado"));
@@ -139,8 +149,5 @@ public class TipoDAO implements ICRUD<Tipo> {
 		return tipoatendimentos;
 
 	}
-	
-	
 
 }
-

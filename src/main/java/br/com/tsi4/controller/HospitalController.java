@@ -11,19 +11,24 @@ import br.com.tsi4.model.Hospital;
 import br.com.tsi4.model.DAO.HospitalDAO;
 import br.com.tsi4.model.DAO.ICRUD;
 
-
 @Controller
 public class HospitalController {
 
-	@Inject
 	private Result result;
 	private ICRUD<Hospital> icrud;
-	@Inject
 	private Hospital hospital;
 	private String mensagen = null;
 
+	@Inject
+	public HospitalController(Result result, HospitalDAO hospitalDAO) {
+		this.icrud = hospitalDAO;
+		this.result = result;
+
+	}
+
+	@Deprecated
 	public HospitalController() {
-		this.icrud = new HospitalDAO();
+		this(null, null);
 	}
 
 	public void formulario() {
@@ -81,4 +86,3 @@ public class HospitalController {
 		result.redirectTo(this).listar();
 	}
 }
-

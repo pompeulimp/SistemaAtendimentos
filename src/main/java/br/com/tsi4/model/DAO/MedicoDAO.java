@@ -7,17 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
 import testBlackBox.IMedicoDAO;
 import br.com.tsi4.model.Medico;
-import br.com.tsi4.model.JDBC.Conectar;
-
+@RequestScoped	
 public class MedicoDAO implements ICRUD<Medico>, IMedicoDAO {
-
+	
 	private Connection connection;
 	private PreparedStatement preparar;
-
+	@Inject
+	public MedicoDAO(Connection connection) {
+		this.connection = connection;
+	}
+	@Deprecated
 	public MedicoDAO() {
-		connection = Conectar.getConnection();
+		this(null);
 	}
 
 	@Override

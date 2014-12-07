@@ -6,16 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
 import br.com.tsi4.model.Atendimento;
 import br.com.tsi4.model.JDBC.Conectar;
 
-public class AtendimentoDAO implements ICRUD<Atendimento>{
+@RequestScoped
+public class AtendimentoDAO implements ICRUD<Atendimento> {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
+	@Inject
+	public AtendimentoDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+	@Deprecated
 	public AtendimentoDAO() {
-		connection = Conectar.getConnection();
+		this(null);
 	}
 
 	@Override
@@ -24,7 +34,7 @@ public class AtendimentoDAO implements ICRUD<Atendimento>{
 				+ "values (? ,? , ? , ?, ? , ? , ? , ?)";
 
 		preparar = connection.prepareStatement(sql);
-		
+
 		preparar.setLong(1, obj.getPk_atendimento());
 		preparar.setInt(2, obj.getPk_paciente());
 		preparar.setInt(3, obj.getPk_tipo());
@@ -43,8 +53,6 @@ public class AtendimentoDAO implements ICRUD<Atendimento>{
 
 		return -1;
 	}
-
-	
 
 	@Override
 	public long update(Atendimento obj) throws SQLException {

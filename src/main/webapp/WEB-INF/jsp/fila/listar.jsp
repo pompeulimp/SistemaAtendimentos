@@ -32,9 +32,9 @@
 						<!--Sql para buscar consultas na fila de antendimento no banco de dados-->
 						<tbody>
 							<tr>
-								<td>1º</td>
-								<td>15:30</td>
+								<td>${paciente.pkPaciente}</td>
 								<td>${paciente.nomePaciente}</td>
+								<td>${medico.pkMedico}</td>
 								<td>${medico.nomeMedico}</td>
 								<td>
 									<button type="submit" id="icnCancelar" class="btn btn-danger">

@@ -14,17 +14,21 @@ import br.com.tsi4.model.DAO.MedicoDAO;
 @Controller
 public class MedicoController {
 
-	@Inject
+	
 	private Result result;
 	private ICRUD<Medico> icrud;
-	@Inject
 	private Medico medico;
 	private String mensagen = null;
-
-	public MedicoController() {
-		this.icrud = new MedicoDAO();
+	
+	@Inject
+	public MedicoController(Result result,MedicoDAO medicoDAO) {
+		this.icrud = medicoDAO;
+		this.result = result;
 	}
-
+	@Deprecated
+	public MedicoController() {
+		this(null, null);
+	}
 	public void formulario() {
 	}
 

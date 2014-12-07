@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <html>
 
 <head>
@@ -13,15 +12,15 @@
 </head>
 
 <body>
+	
 	<c:import url="../include/menu.jsp"></c:import>
-
+	
 	<div>
 		<c:import url="../fila/pacienteSearch.jsp"></c:import>
 	</div>
-
+	
 	<div>
 		<c:import url="../fila/medicoSearch.jsp"></c:import>
 	</div>
-
 </body>
 </html>

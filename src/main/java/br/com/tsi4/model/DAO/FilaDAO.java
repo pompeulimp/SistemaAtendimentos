@@ -9,16 +9,25 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.tsi4.model.Fila;
-import br.com.tsi4.model.JDBC.Conectar;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
+import br.com.tsi4.model.Fila;
+
+@RequestScoped
 public class FilaDAO implements ICRUD<Fila> {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
-	public FilaDAO() {
-		connection = Conectar.getConnection();
+	@Inject
+	public FilaDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+	@Deprecated
+	 public FilaDAO() {
+		this(null);
 	}
 
 	@Override
@@ -28,8 +37,8 @@ public class FilaDAO implements ICRUD<Fila> {
 				+ "hora_entrada, pk_medico)" + "values (?,?,?,?)";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getpkPaciente());
-		preparar.setBoolean(2, obj.getStatus());
+		preparar.setLong(1, obj.getPkPaciente());
+		preparar.setBoolean(2, obj.isStatus());
 		preparar.setTimestamp(3, new Timestamp(obj.getHoraEntrada()
 				.getTimeInMillis()));
 		preparar.setLong(4, obj.getPkMedico());
@@ -46,20 +55,19 @@ public class FilaDAO implements ICRUD<Fila> {
 	@Override
 	public long update(Fila obj) throws SQLException {
 
-		String sql = "update fila set pk_paciente=?,status=?,"
-				+ "hora_saida=?, pk_medico=? where pk_fila = ?";
+		String sql = "update fila set status=?,"
+				+ "hora_saida=? where pk_fila = ?";
 
 		preparar = connection.prepareStatement(sql);
-		preparar.setLong(1, obj.getpkPaciente());
-		preparar.setBoolean(2, obj.getStatus());
-		preparar.setTimestamp(3, new Timestamp(obj.getHoraSaida()
+
+		preparar.setBoolean(1, obj.isStatus());
+		preparar.setTimestamp(2, new Timestamp(obj.getHoraSaida()
 				.getTimeInMillis()));
-		preparar.setLong(4, obj.getPkMedico());
-		preparar.setLong(5, obj.getpkFila());
+		preparar.setLong(3, obj.getPkFila());
 
 		preparar.execute();
 
-		return obj.getpkFila();
+		return obj.getPkFila();
 	}
 
 	@Override
@@ -106,7 +114,8 @@ public class FilaDAO implements ICRUD<Fila> {
 	public Fila retriveOneByPkKey(long pkKLey) throws SQLException {
 
 		Fila fila = null;
-		Calendar calendar = Calendar.getInstance();
+		Calendar entrada = Calendar.getInstance();
+		Calendar saida = Calendar.getInstance();
 		String sql = "select * from (select * from pacientes join fila using(pk_paciente)) pf where pf.pk_paciente=?";
 
 		preparar = connection.prepareStatement(sql);
@@ -114,9 +123,10 @@ public class FilaDAO implements ICRUD<Fila> {
 		ResultSet rs = preparar.executeQuery();
 
 		while (rs.next()) {
-			calendar.setTimeInMillis(rs.getTimestamp("hora_entrada").getTime());
+			entrada.setTimeInMillis(rs.getTimestamp("hora_entrada").getTime());
+
 			fila = new Fila(rs.getLong("pk_fila"), rs.getLong("pk_paciente"),
-					rs.getLong("pk_medico"), calendar);
+					rs.getLong("pk_medico"), entrada, saida);
 		}
 		preparar.close();
 

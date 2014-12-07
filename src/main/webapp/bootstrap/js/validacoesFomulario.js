@@ -132,7 +132,7 @@ function validaEmail(email, campo){
 }
 
 function validaEndereco(valor,campo,sub){
-	var exprecao = /^[a-z]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,.]*\ [a-z0-9,. ]*$/ig;
+	var exprecao = /^[^a-z^1-9]+[A-Za-z1-9., ]+$/ig;
 	var resultado = exprecao.test(valor);
 	
 	if(!resultado){

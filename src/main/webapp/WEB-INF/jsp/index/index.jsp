@@ -13,9 +13,6 @@
 <title>Bem vindo ao Sistema de Atendimentos Web de Hospitais</title>
 </head>
 <body onload="startTime()">
-
-	<c:import url="../include/menu.jsp"></c:import>
-	
-	
+	<c:import url="../include/menu.jsp"></c:import>	
 </body>
 </html>

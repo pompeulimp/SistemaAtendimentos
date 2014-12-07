@@ -7,33 +7,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.tsi4.model.Hospital;
-import br.com.tsi4.model.JDBC.Conectar;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
+import br.com.tsi4.model.Hospital;
+
+@RequestScoped
 public class HospitalDAO implements ICRUD<Hospital> {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
+	@Inject
+	public HospitalDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+	@Deprecated
 	public HospitalDAO() {
-		connection = Conectar.getConnection();
+		this(null);
 	}
 
 	@Override
 	public long create(Hospital obj) throws SQLException {
-		String sql = "insert into hospitais (pk_fila,razaosocial,nomefantasia,cnpj,endhospital,telefonehospital)"
-				+ "values (?, ? , ?, ?, ?, ?)";
+		String sql = "insert into hospitais (razaosocial,nomefantasia,cnpj,endhospital,telefonehospital)"
+				+ "values (?, ? , ?, ?, ?)";
 
 		preparar = connection.prepareStatement(sql);
 
-
-
-		preparar.setLong(1, obj.getPkFila());
-		preparar.setString(2, obj.getRazaosocial());
-		preparar.setString(3, obj.getNomeFantasia());
-		preparar.setString(4, obj.getCnpj());
-		preparar.setString(5, obj.getEnderecoHospital());
-		preparar.setString(6, obj.getTelefonehospital());
+		preparar.setString(1, obj.getRazaosocial());
+		preparar.setString(2, obj.getNomeFantasia());
+		preparar.setString(3, obj.getCnpj());
+		preparar.setString(4, obj.getEnderecoHospital());
+		preparar.setString(5, obj.getTelefonehospital());
 
 		preparar.execute();
 		ResultSet rs = preparar.getGeneratedKeys();
@@ -49,15 +55,13 @@ public class HospitalDAO implements ICRUD<Hospital> {
 	public long update(Hospital obj) throws SQLException {
 
 		String sql = "update hospitais set"
-				+ "(pk_hospital =? pk_fila=?, razaosocial=?, nomefantasia=? , cnpj=?, endhospital=?,telefonehospital=?)";
+				+ "(razaosocial=?, nomefantasia=? , cnpj=?, endhospital=?,telefonehospital=?)";
 
 		preparar = connection.prepareStatement(sql);
 
-		preparar.setLong(1, obj.getPkHospital());
-		preparar.setLong(2, obj.getPkFila());
-		preparar.setString(3, obj.getRazaosocial());
-		preparar.setString(4, obj.getCnpj());
-		preparar.setString(4, obj.getEnderecoHospital());
+		preparar.setString(1, obj.getRazaosocial());
+		preparar.setString(2, obj.getCnpj());
+		preparar.setString(3, obj.getEnderecoHospital());
 		preparar.setString(4, obj.getTelefonehospital());
 
 		preparar.execute();
@@ -102,7 +106,6 @@ public class HospitalDAO implements ICRUD<Hospital> {
 			hospital = new Hospital();
 
 			hospital.setPkHospital(rs.getInt("pk_hospital"));
-			hospital.setPkFila(rs.getInt("pk_fila"));
 			hospital.setRazaosocial(rs.getString("razaosocial"));
 			hospital.setNomeFantasia(rs.getString("nomefantasia"));
 			hospital.setCnpj(rs.getString("cnpj"));
@@ -130,7 +133,6 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		while (rs.next()) {
 			hospital = new Hospital();
 			hospital.setPkHospital(rs.getInt("pk_medico"));
-			hospital.setPkFila(rs.getInt("pk_fila"));
 			hospital.setRazaosocial(rs.getString("razaosocial"));
 			hospital.setNomeFantasia(rs.getString("nomefantasia"));
 			hospital.setCnpj(rs.getString("cnpj"));
@@ -158,7 +160,6 @@ public class HospitalDAO implements ICRUD<Hospital> {
 		while (rs.next()) {
 			hospital = new Hospital();
 			hospital.setPkHospital(rs.getInt("pk_hospital"));
-			hospital.setPkFila(rs.getInt("pk_fila"));
 			hospital.setRazaosocial(rs.getString("razaosocial"));
 			hospital.setNomeFantasia(rs.getString("nomefantasia"));
 			hospital.setCnpj(rs.getString("cnpj"));

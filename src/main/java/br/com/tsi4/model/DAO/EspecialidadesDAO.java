@@ -7,16 +7,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.tsi4.model.Especialidade;
-import br.com.tsi4.model.JDBC.Conectar;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
+import br.com.tsi4.model.Especialidade;
+
+@RequestScoped
 public class EspecialidadesDAO implements ICRUD<Especialidade> {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
+	@Inject
+	public EspecialidadesDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+	@Deprecated
 	public EspecialidadesDAO() {
-		connection = Conectar.getConnection();
+		this(null);
 	}
 
 	@Override

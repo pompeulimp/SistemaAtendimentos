@@ -8,7 +8,7 @@ public class Fila {
 	private long pkPaciente;
 	private long pkMedico;
 	private boolean status;
-	private final Calendar horaEntrada;
+	private Calendar horaEntrada;
 	private Calendar horaSaida;
 
 	/**
@@ -19,14 +19,19 @@ public class Fila {
 	 */
 	public Fila(long pkPaciente, long pkMedico) {
 		this.pkPaciente = pkPaciente;
-		this.setPkMedico(pkMedico);
+		this.pkMedico = pkMedico;
 		this.horaEntrada = Calendar.getInstance(); // data hora de entrada
 		this.setStatus(true); // entrada na fila
 	}
+	
+	public Fila(boolean status) {
+		this.status = status;
+		this.horaSaida = Calendar.getInstance();
 
+	}
 	/**
-	 * * 	esse contrutor recebe todos paramentros para criar um objeto completo
-	 * 		que vem do banco de dados
+	 * * esse contrutor recebe todos paramentros para criar um objeto completo
+	 * que vem do banco de dados
 	 * 
 	 * @param pkFila
 	 * @param pkPaciente
@@ -34,25 +39,33 @@ public class Fila {
 	 * @param horaEntrada
 	 */
 	public Fila(long pkFila, long pkPaciente, long pkMedico,
-			Calendar horaEntrada) {
+			Calendar horaEntrada, Calendar horaSaida) {
 		this.pkFila = pkFila;
 		this.pkPaciente = pkPaciente;
 		this.pkMedico = pkMedico;
 		this.setStatus(false);
 		this.horaEntrada = horaEntrada;
-		this.setHoraSaida(Calendar.getInstance());
-	}
-
-	public void setHoraSaida(Calendar horaSaida) {
 		this.horaSaida = horaSaida;
 	}
 
-	public long getpkFila() {
+	public long getPkFila() {
 		return pkFila;
 	}
 
-	public long getpkPaciente() {
+	public long getPkPaciente() {
 		return pkPaciente;
+	}
+
+	public long getPkMedico() {
+		return pkMedico;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public Calendar getHoraEntrada() {
@@ -63,22 +76,7 @@ public class Fila {
 		return horaSaida;
 	}
 
-	public boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public long getPkMedico() {
-		return pkMedico;
-	}
-
-	public void setPkMedico(long pkMedico) {
-		this.pkMedico = pkMedico;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Fila [pkFila=" + pkFila + ", pkPaciente=" + pkPaciente

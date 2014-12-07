@@ -3,6 +3,7 @@ package testBlackBox;
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.After;
@@ -36,22 +37,10 @@ public class TestarFila {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
 	public void testeEntradaNaFilaAtendimentos() throws SQLException {
 
-		ICRUD<Paciente> icrudPanciente = new PacienteDAO();
-		List<Paciente> pacientes = icrudPanciente.retriveByName("Jose");
-		for (Paciente p : pacientes) {
-			System.out.println(p.toString());
-		}
-		ICRUD<Medico> icrudMedico = new MedicoDAO();
-		List<Medico> medicosbyName = icrudMedico.retriveByName("Jacinto");
-		for (Medico m : medicosbyName) {
-			System.out.println(m.toString());
-		}
-
-		Fila fila = new Fila(pacientes.get(0).getPk_paciente(), medicosbyName
-				.get(0).getPkMedico());
+		Fila fila = new Fila(32, 5);
 
 		ICRUD<Fila> icrudFila = new FilaDAO();
 
@@ -84,10 +73,9 @@ public class TestarFila {
 		long pkKLey = pacientes.get(0).getPk_paciente();
 		ICRUD<Fila> icrudFila = new FilaDAO(); // pegando paciente em uma fila
 												// Fila fila =
-		
 
 		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
-		assertTrue(icrudFila.delete(fila.getpkFila()));
+		assertTrue(icrudFila.delete(fila.getPkFila()));
 
 	}
 
@@ -99,17 +87,18 @@ public class TestarFila {
 		assertEquals(paciente.getCpfPaciente(), "00311920179");
 
 		IMedicoDAO daoMedico = new MedicoDAO();
-		Medico medico = daoMedico.retriveByCRM("0031231569");
-		assertEquals(medico.getCrm(), "0031231569");
+		Medico medico = daoMedico.retriveByCRM("12345");
+		assertEquals(medico.getCrm(), "12345");
 
 		long pkKLey = paciente.getPk_paciente();
+		
 		ICRUD<Fila> icrudFila = new FilaDAO();
 
 		Fila fila = icrudFila.retriveOneByPkKey(pkKLey);
 		fila.setStatus(false);
-
+		
 		long fk_fila = icrudFila.update(fila);
-
+		assertTrue(fila.getHoraSaida().getTimeInMillis() != 0);
 		assertTrue(fk_fila > 0);
 	}
 

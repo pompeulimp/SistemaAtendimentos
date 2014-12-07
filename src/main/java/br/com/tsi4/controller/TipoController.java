@@ -15,17 +15,21 @@ import br.com.tsi4.model.DAO.TipoDAO;
 @Controller
 public class TipoController {
 
-	@Inject
+	
 	private Result result;
-	private ICRUD<Tipo> icrud;
-	@Inject
+	private final ICRUD<Tipo> icrud;
 	private Tipo tipo;
 	private String mensagen = null;
-
-	public TipoController() {
-		this.icrud = new TipoDAO();
+	
+	@Inject
+	public TipoController(Result result, TipoDAO tipoDAO) {
+		this.icrud = tipoDAO;
+		this.result = result;
 	}
-
+	@Deprecated
+	public TipoController() {
+		this(null,null);
+	}
 	public void formulario() {
 	}
 

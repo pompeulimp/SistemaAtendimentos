@@ -5,11 +5,11 @@
 <fieldset>
 	<form id="medicocrm" action="<c:url value="/medico/crm"/>"
 		method="post" class="navbar-form navbar-left" role="search">
-		<label>Buscar Medico por CRM</label>
-		<input type="text" name="crm" value="${crm}" id="busca"
-			placeholder="CRM Medico" class="form-control" size="30"> <input
-			type="submit" value="ok" class="btn">
-			<div class="resultM"></div>
+		<label>Buscar Medico por CRM</label> <input type="text" name="crm"
+			value="${crm}" id="busca" placeholder="CRM Medico"
+			class="form-control" size="30"> <input type="submit"
+			value="ok" class="btn">
+		<div class="resultM"></div>
 	</form>
 
 	<script>
@@ -25,6 +25,7 @@
 
 					posting.done(function(data) {
 						$(".resultM").html(data);
+
 					});
 				});
 	</script>

@@ -13,16 +13,20 @@ import br.com.tsi4.model.DAO.UsuarioDAO;
 
 @Controller
 public class UsuarioController {
-	
-	@Inject
+
 	private Result result;
-	private ICRUD<Usuario> icrud;
-	@Inject
+	private final ICRUD<Usuario> icrud;
 	private Usuario usuario;
 	private String mensagen = null;
 
+	@Inject
+	public UsuarioController(Result result, UsuarioDAO usuarioDAO) {
+		this.icrud = usuarioDAO;
+		this.result = result;
+	}
+	@Deprecated
 	public UsuarioController() {
-		this.icrud = new UsuarioDAO();
+		this(null, null);
 	}
 
 	public void formulario() {
@@ -38,11 +42,11 @@ public class UsuarioController {
 		result.of(this).formulario();
 	}
 
-	public void deletar(long pkKey){
+	public void deletar(long pkKey) {
 		try {
-			if(icrud.delete(pkKey)){
+			if (icrud.delete(pkKey)) {
 				mensagen = "deletado";
-			}else{
+			} else {
 				mensagen = "não econtroado";
 			}
 		} catch (SQLException e) {

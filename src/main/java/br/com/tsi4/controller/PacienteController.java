@@ -13,17 +13,20 @@ import br.com.tsi4.model.DAO.PacienteDAO;
 
 @Controller
 public class PacienteController {
-	@Inject
+
 	private Result result;
 	private ICRUD<Paciente> icrud;
-	@Inject
 	private Paciente paciente;
 	private String mensagen = null;
-
-	public PacienteController() {
-		this.icrud = new PacienteDAO();
+	@Inject
+	public PacienteController(Result result, PacienteDAO pacienteDAO) {
+		this.icrud = pacienteDAO;
+		this.result = result;
 	}
-
+	@Deprecated
+	public PacienteController() {
+		this(null,null);
+	}
 	public void formulario() {
 	}
 
@@ -37,11 +40,11 @@ public class PacienteController {
 		result.of(this).formulario();
 	}
 
-	public void deletar(long pkKey){
+	public void deletar(long pkKey) {
 		try {
-			if(icrud.delete(pkKey)){
+			if (icrud.delete(pkKey)) {
 				mensagen = "deletado";
-			}else{
+			} else {
 				mensagen = "não econtroado";
 			}
 		} catch (SQLException e) {

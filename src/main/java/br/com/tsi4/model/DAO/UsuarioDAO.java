@@ -6,34 +6,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import br.com.tsi4.model.Usuario;
-import br.com.tsi4.model.JDBC.Conectar;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
+import br.com.tsi4.model.Usuario;
+
+@RequestScoped
 public class UsuarioDAO implements ICRUD<Usuario> {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
-	public UsuarioDAO() {
-		connection = Conectar.getConnection();
+	@Inject
+	public UsuarioDAO(Connection connection) {
+		this.connection = connection;
 	}
-	
-	public boolean existe(Usuario usuario){
+
+	@Deprecated
+	public UsuarioDAO() {
+		this(null);
+	}
+
+	public boolean existe(Usuario usuario) {
 		String sql = "SELECT NOMEUSUARIO, SENHA FROM USUARIOS WHERE NOMEUSUARIO =? AND SENHA=?";
-		
-		try{
+
+		try {
 			preparar = connection.prepareStatement(sql);
 			preparar.setString(1, usuario.getNomeUsuario());
 			preparar.setString(2, usuario.getSenha());
-			
+
 			ResultSet rs = preparar.executeQuery();
 			return rs.next();
-			
-		} catch(SQLException e){
-			System.out.println("Ocorreu um erro: ");e.getMessage();
+
+		} catch (SQLException e) {
+			System.out.println("Ocorreu um erro: ");
+			e.getMessage();
 		}
 		usuario.setNomeUsuario("admin");
-		
+
 		return false;
 	}
 
@@ -44,7 +55,6 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 
 		preparar = connection.prepareStatement(sql);
 
-		
 		preparar.setString(1, obj.getNomeUsuario());
 		preparar.setString(2, obj.getSenha());
 		preparar.setString(3, obj.getNivelUsuario());
@@ -62,7 +72,7 @@ public class UsuarioDAO implements ICRUD<Usuario> {
 	@Override
 	public long update(Usuario obj) throws SQLException {
 		String sql = "update usuarios set nomeusuario=? , senha=? , nivelusuario=? where pk_usuario=?";
-		
+
 		preparar = connection.prepareStatement(sql);
 
 		preparar.setString(1, obj.getNomeUsuario());

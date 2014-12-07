@@ -7,17 +7,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
 import testBlackBox.IPacienteDAO;
 import br.com.tsi4.model.Paciente;
-import br.com.tsi4.model.JDBC.Conectar;
 
+@RequestScoped
 public class PacienteDAO implements ICRUD<Paciente>, IPacienteDAO {
 
 	private Connection connection;
 	private PreparedStatement preparar;
 
+	@Inject
+	public PacienteDAO(Connection connection) {
+		this.connection = connection;
+	}
+
+	@Deprecated
 	public PacienteDAO() {
-		connection = Conectar.getConnection();
+		this(null);
 	}
 
 	@Override

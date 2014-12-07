@@ -5,14 +5,13 @@ import java.util.Queue;
 public class Hospital {
 
 	private long pkHospital;
-	private long pkFila;
 	private String razaosocial;
 	private String nomeFantasia;
 	private String cnpj;
 	private String enderecoHospital;
 	private String telefonehospital;
 	private Queue<Paciente> filaAtendimento;
-	
+
 	public Hospital() {
 
 	}
@@ -23,14 +22,6 @@ public class Hospital {
 
 	public void setPkHospital(long pkHospital) {
 		this.pkHospital = pkHospital;
-	}
-
-	public long getPkFila() {
-		return pkFila;
-	}
-
-	public void setPkFila(long pkFila) {
-		this.pkFila = pkFila;
 	}
 
 	public String getRazaosocial() {
@@ -80,5 +71,5 @@ public class Hospital {
 	public void setFilaAtendimento(Queue<Paciente> filaAtendimento) {
 		this.filaAtendimento = filaAtendimento;
 	}
-	
+
 }

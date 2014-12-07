@@ -1,5 +1,7 @@
 package br.com.tsi4.model;
 
+
+
 public class Paciente {
 	private long pk_paciente;
 	private String nomePaciente;
@@ -10,7 +12,7 @@ public class Paciente {
 	public Paciente() {
 
 	}
-	
+
 	public Paciente(long pk_paciente, String nomePaciente, String cpfPaciente,
 			String enderecoPaciente, String telefonePaciente) {
 		this.pk_paciente = pk_paciente;

@@ -14,17 +14,22 @@ import br.com.tsi4.model.DAO.ICRUD;
 @Controller
 public class EspecialidadeController {
 
-	@Inject
+	
 	private Result result;
 	private ICRUD<Especialidade> icrud;
-	@Inject
 	private Especialidade especialidade;
 	private String mensagen = null;
-
-	public EspecialidadeController() {
-		this.icrud = new EspecialidadesDAO();
+	@Inject
+	public EspecialidadeController(Result result ,EspecialidadesDAO especialidadesDAO) {
+	
+		this.result = result;
+		this.icrud = especialidadesDAO;
+	
 	}
-
+	@Deprecated
+	public EspecialidadeController() {
+		this(null,null);
+	}
 	public void formulario() {
 	}
 
