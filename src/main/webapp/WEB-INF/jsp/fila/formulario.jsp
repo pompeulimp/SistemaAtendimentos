@@ -12,10 +12,18 @@
 </head>
 
 <body>
-	
+
 	<c:import url="../include/menu.jsp"></c:import>
-	<div>
-		<c:import url="../fila/pacienteSearch.jsp"></c:import>
+	<div class="container">
+		<div class="row" id="main-content">
+			<div class="well" align="center">
+				<div class="span4" id="sidebar">
+					<div>
+						<c:import url="../fila/pacienteSearch.jsp"></c:import>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

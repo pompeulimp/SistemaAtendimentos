@@ -97,7 +97,7 @@ public class FilaDAO implements ICRUD<Fila> {
 
 		ResultSet rs = preparar.executeQuery();
 		Calendar entrada = Calendar.getInstance();
-		Calendar saida = Calendar.getInstance();
+		Calendar saida = null;
 		while (rs.next()) {
 			entrada.setTimeInMillis(rs.getTimestamp("hora_entrada").getTime());
 			//saida.setTimeInMillis(rs.getTimestamp("hora_saida").getTime());

@@ -27,7 +27,6 @@
 							<td><strong>Paciente </strong></td>
 							<td><strong>Status </strong><br>
 							<td><strong>Entrada </strong><br>
-							<td><strong>Saida </strong><br>
 						</thead>
 						<!--Sql para buscar consultas na fila de antendimento no banco de dados-->
 						<tbody>
@@ -42,12 +41,8 @@
             							value="${fila.horaEntrada.time}" /></td>
             							<td><fmt:formatDate type="both" 
             							value="${fila.horaSaida.time}" /></td>
-										<td><a href="${linkTo[FilaController].editar}?pkKey=${especialidade.pkEspecialidade}"><button
-													type="submit" id="icnEditar" class="btn btn-default">
-													<i class="glyphicon glyphicon-edit"></i>
-												</button></a></td>
 										<td><a
-											href="${linkTo[FilaController].deletar}?pkKey=${especialidade.pkEspecialidade}">
+											href="${linkTo[FilaController].deletar}?pkKey=${fila.pkFila}">
 												<button type="submit" id="icnCancelar"
 													class="btn btn-danger">
 													<i class="glyphicon glyphicon-remove"></i>

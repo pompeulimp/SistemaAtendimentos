@@ -101,5 +101,10 @@ public class TestarFila {
 		assertTrue(fila.getHoraSaida().getTimeInMillis() != 0);
 		assertTrue(fk_fila > 0);
 	}
+	
+	@Test
+	public void deveCriarUmFilaPorMedico(){
+		
+	}
 
 }
